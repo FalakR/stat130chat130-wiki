@@ -20,6 +20,6 @@
 1. Material covered in future weeks
 2. Anything not substantively addressed above...
 3. ...such as how to handle missing values using more advanced methods than just "ignoring" or "removing" them
-4. ...more general "data wrangling" such as "joining", "merging", "pivoting" "wide to long" formats, "tidy" data, etc.
+4. ...further "data wrangling topics" such as "joining" and "merging"; "pivoting", "wide to long", and "tidy" data formats; etc.
 
 # 02 Coding
