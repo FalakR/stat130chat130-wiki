@@ -11,7 +11,7 @@
 2. loading data... with [`pd.read_csv()`](01.2)
 3. counting missing values... with [`df.isna.sum()`](01.3)
     1. [boolean values and coercion](01.3)
-4. continuous versus categorical... [`df.describe()` and `df.value_counts()`](01.4)
+4. continuous versus categorical... [`df.describe()`](01.4) and [`df.value_counts()`](01.4)
 
 
 
