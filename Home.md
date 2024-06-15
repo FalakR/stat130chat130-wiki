@@ -9,8 +9,14 @@
 **Topics**
 1. importing libraries... like [`pandas`](01.1)
 2. loading data... with [`pd.read_csv()`](01.2)
-3. counting missing values... with [`df.isnull.sum()`](01.3)
-4. s
+3. counting missing values... with [`df.isna.sum()`](01.3)
+    1. [boolean values and coercion](01.3)
+4. continuous versus categorical... [`df.describe()` and `df.value_counts()`](01.4)
+
+The `df.describe()` method provides descriptive statistics that summarize the central tendency, dispersion, and shape of a dataset’s distribution, excluding NaN values. It’s typically used for numerical data to get an overview of the mean, median, quartiles, and other statistical measures.
+
+The `df.value_counts()` method returns a Series containing counts of unique values. This method is used for categorical data to understand the distribution of categories within a feature. It does not count NaN values by default, but you can include them by setting dropna=False.
+
 
 **Out of scope**
 1. Material covered in future weeks
