@@ -18,6 +18,6 @@
 **Out of scope**
 1. Material covered in future weeks
 2. Anything no discussed above...
-3. ...such as 
+3. ...such as handling missing values with more advanced methods than either "ignoring" or "removing" them
 
 # 02 Coding
