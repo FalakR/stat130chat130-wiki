@@ -17,5 +17,7 @@
 
 **Out of scope**
 1. Material covered in future weeks
-2. 
+2. Anything no discussed above...
+3. ...such as 
+
 # 02 Coding
