@@ -17,7 +17,7 @@
 
 **Out of scope**
 1. Material covered in future weeks
-2. Anything no discussed above...
-3. ...such as handling missing values with more advanced methods than either "ignoring" or "removing" them
+2. Anything not discussed above...
+3. ...such as how to handle missing values using more advanced methods than just "ignoring" or "removing" them
 
 # 02 Coding
