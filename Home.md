@@ -3,7 +3,7 @@
 1. [GitHub](https://github.com/pointOfive/STA130_ChatGPT/blob/main/README.md)
 2. [UofT Jupyterhub](https://datatools.utoronto.ca) (or[google collab](https://colab.research.google.com/)) `.ipynb` notebook files
 3. [Copilot](https://copilot.microsoft.com/) (or [ChatGPT](https://chat.openai.com/))
-4. Course [textbook](https://github.com/pointOfive/STA130_ChatGPT/wiki/)
+4. Course [wiki-textbook](https://github.com/pointOfive/STA130_ChatGPT/wiki/)
 
 # 01 Data Summarization
 **Topics**
@@ -23,3 +23,8 @@
 4. ...further "data wrangling topics" such as "joining" and "merging"; "pivoting", "wide to long", and "tidy" data formats; etc.
 
 # 02 Coding
+
+1. loops... with [`for`](02.1)
+2. logical flow control... with [`if`/`else` ](02.2)
+3. data types... such as [`list`, `tuple`, `dict`, and `np.array`](02.3)
+4. text data... [`str`](02.4)
