@@ -6,7 +6,7 @@
 4. Course [wiki-textbook](https://github.com/pointOfive/STA130_ChatGPT/wiki/)
 
 # 01 Data Summarization
-**Topics**
+**TUT Topics**
 1. importing libraries... like [`pandas`](01.1)
 2. loading data... with [`pd.read_csv()`](01.2)
 3. counting missing values... with [`df.isna.sum()`](01.3)
@@ -15,6 +15,10 @@
 5. observations (rows) and variables (columns)... [`df.shape`](01.5) and [`df.columns`](01.5)
 6. removing missing data... with [`df.dropna()`](01.6) and [`del df['col']`](01.6)
 7. grouping and aggregation.... with [`df.groupby("col1")["col2"].describe()`](01.7)
+
+**LEC Topics**
+
+1. TBD
 
 **Out of scope**
 1. Material covered in future weeks
