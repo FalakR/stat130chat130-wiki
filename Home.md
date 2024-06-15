@@ -18,7 +18,7 @@
 
 **LEC Topics**
 
-1. TBD
+1. parameter, arguments, function side-effects, ... 
 
 **Out of scope**
 1. Material covered in future weeks
