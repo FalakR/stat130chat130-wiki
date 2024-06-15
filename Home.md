@@ -8,7 +8,7 @@
 # 01 Data Wrangling
 **Topics**
 1. importing libraries... [like `pandas`](01.1)
-2. loading data... with `pd.read_csv()`
+2. loading data... [with `pd.read_csv()`](01.2)
 3. counting missing values... with `df.isnull.sum()`
 4. s
 
