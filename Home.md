@@ -12,7 +12,7 @@
 3. counting missing values... with [`df.isna.sum()`](01.3)
     1. [boolean values and coercion](01.3)
 4. continuous versus categorical... [`df.describe()`](01.4) and [`df.value_counts()`](01.4)
-
+5. observations (rows) and variables (columns)... with [`df.shape`](01.5) and [`df.columns`](01.5)
 
 
 **Out of scope**
