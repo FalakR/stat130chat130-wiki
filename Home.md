@@ -11,8 +11,8 @@
 2. loading data... with [`pd.read_csv()`](01.2)
 3. counting missing values... with [`df.isna.sum()`](01.3)
     1. [boolean values and coercion](01.3)
-4. continuous versus categorical... [`df.describe()`](01.4) and [`df.value_counts()`](01.4)
-5. observations (rows) and variables (columns)... [`df.shape`](01.5) and [`df.columns`](01.5)
+4. observations (rows) and variables (columns)... [`df.shape`](01.5) and [`df.columns`](01.5)
+5. continuous versus categorical... [`df.describe()`](01.4) and [`df.value_counts()`](01.4)
 6. removing missing data... with [`df.dropna()`](01.6) and [`del df['col']`](01.6)
 7. grouping and aggregation.... with [`df.groupby("col1")["col2"].describe()`](01.7)
 
