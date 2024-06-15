@@ -13,7 +13,7 @@
     1. [boolean values and coercion](01.3)
 4. continuous versus categorical... [`df.describe()`](01.4) and [`df.value_counts()`](01.4)
 5. observations (rows) and variables (columns)... [`df.shape`](01.5) and [`df.columns`](01.5)
-6. removing missing data... with `df.dropna()` and `del df['col']`
+6. removing missing data... with [`df.dropna()`](01.6) and [`del df['col']`](01.6)
 
 **Out of scope**
 1. Material covered in future weeks
