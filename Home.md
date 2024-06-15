@@ -25,6 +25,6 @@
 # 02 Coding
 
 1. loops... with [`for`](02.1)
-2. logical flow control... with [`if`/`else` ](02.2)
-3. data types... such as [`list`, `tuple`, `dict`, and `np.array`](02.3)
+2. logical flow control... with [`if`](02.2)/[`else`](02.2)
+3. data types... such as [`list`](02.3), [`tuple`](02.3), [`dict`](02.3), and [`np.array`](02.3)
 4. text data... [`str`](02.4)
