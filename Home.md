@@ -33,6 +33,7 @@
 
 # 02 Coding
 
+1. first data types... [`tuple`](02.1), [`list`](02.1), [`dict`](02.1)
 1. loops... with [`for`](02.1)
 2. logical flow control... with [`if`](02.2)/[`else`](02.2)
 3. data types... such as [`list`](02.3), [`tuple`](02.3), [`dict`](02.3), and [`np.array`](02.3)
