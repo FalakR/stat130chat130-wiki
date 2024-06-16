@@ -6,19 +6,24 @@
 4. Course [wiki-textbook](https://github.com/pointOfive/STA130_ChatGPT/wiki/)
 
 # 01 Data Summarization
-**TUT Topics**
+**TUT/LEC Topics**
 1. importing libraries... like [`pandas`](01.1)
 2. loading data... with [`pd.read_csv()`](01.2)
+    1. parameters and arguments 
 3. counting missing values... with [`df.isna.sum()`](01.3)
     1. [boolean values and coercion](01.3)
 4. observations (rows) and variables (columns)... [`df.shape`](01.5) and [`df.columns`](01.5)
+    1. function side-effects 
 5. continuous versus categorical... [`df.describe()`](01.4) and [`df.value_counts()`](01.4)
+    1. `.dtypes` and `.astype()` 
+    2. statistic calculation functions
 6. removing missing data... with [`df.dropna()`](01.6) and [`del df['col']`](01.6)
+    1. dictionary `dict()` objects
 7. grouping and aggregation.... with [`df.groupby("col1")["col2"].describe()`](01.7)
+8. New LEC topics
+    1. sorting and indexing
+    2. subsetting and boolean selection
 
-**LEC Topics**
-
-1. parameters, arguments, function side-effects, ... 
 
 **Out of scope**
 1. Material covered in future weeks
