@@ -57,6 +57,7 @@
 
 # 03 Data Visualization
 
+0. ["types of data"](03.0)... continuous, discrete, nominal and ordinal categorical, and binary
 1. [bar plots](03.1) and the [mode](03.1)
     1. plotting... plotly, seaborn, matplotlib, pandas
 2. [histograms](03.2)
