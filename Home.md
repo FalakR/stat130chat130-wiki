@@ -60,7 +60,7 @@
 1. [barplots](03.1) and the [mode](03.1)
     1. plotting... plotly, seaborn, matplotlib, pandas
 2. [histograms](03.2) and the [range](03.2) and [IQR](03.2)
-    1. legends annotations
+    1. legends and annotations
 3. [skew](03.3)
     1. mean versus [median](03.3)
 4. [multimodality](03.4)  
