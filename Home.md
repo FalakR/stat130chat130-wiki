@@ -57,11 +57,11 @@
 
 # 03 Data Visualization
 
-1. [barplots](03.1) and the [mode](03.1)
+1. [bar plots](03.1) and the [mode](03.1)
     1. plotting... plotly, seaborn, matplotlib, pandas
 2. [histograms](03.2)
     1. kernel density estimation "violin plots" 
-3. [boxplots](03.3), [range](03.3), [IQR](03.3) and [outliers](03.3)
+3. [box plots](03.3), [range](03.3), [IQR](03.3) and [outliers](03.3)
     1. legends, annotations, figure panels
 4. [skew](03.4) and [multimodality](03.4) 
     1. [mean versus median](03.4) and [normality and standard deviations](03.4)
