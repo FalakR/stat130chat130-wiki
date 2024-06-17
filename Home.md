@@ -52,8 +52,28 @@
 1. Material covered in future weeks
 2. Anything not substantively addressed above...
 3. ...such as modular code design (with `def` based functions or `classes`)
-4. ...dictionary iteration (which has been removed from the above material)
-5. ...text manipulation with `lambda`, `.replace`, `re` (which are introduced but are generally out of scope for STA130)
+4. ...such as dictionary iteration (which has been removed from the above material)
+5. ...such as text manipulation with `lambda`, `.replace`, `re` (which are introduced but are generally out of scope for STA130)
 
-# 01 Data Visualization
+# 03 Data Visualization
+
+1. [barplots](03.1) and the [mode](03.1)
+    1. plotting... plotly, seaborn, matplotlib, pandas
+2. [histograms](03.2) and the [range](03.2) and [IQR](03.2)
+    1. legends annotations
+3. [skew](03.3)
+    1. mean versus [median](03.3)
+4. [multimodality](03.4)  
+    1. normality and standard deviation
+5. [boxplots](03.5)
+    1. kernel density estimation
+6. [outliers](03.6)
+
+**Out of scope**
+1. Material covered in future weeks
+2. Anything not substantively addressed above...
+3. ...such as expectation, moments, integration...
+4. ...such as heavy tailed distributions...
+5. ...bokeh, shiny, d3, ...
+
 
