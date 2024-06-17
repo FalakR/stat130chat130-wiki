@@ -46,14 +46,14 @@
 5. logical flow control... with [`if`](02.5)/[`else`](02.5)/[`elif`](02.5)
 6. New LEC topics
     1. conditional probability Pr(Y=y|X=x)
-        1. ~text manipulation with `lambda`, `.replace`, `re`~
+        1. ~text manipulation with `.apply(lambda x: ...)`, `.replace()`, `re`~
 
 **Out of scope**
 1. Material covered in future weeks
 2. Anything not substantively addressed above...
 3. ...such as modular code design (with `def` based functions or `classes`)
 4. ...such as dictionary iteration (which has been removed from the above material)
-5. ...such as text manipulation with `lambda`, `.replace`, `re` (which are introduced but are generally out of scope for STA130)
+5. ...such as text manipulation with `.apply(lambda x: ...)`, `.replace()`, `re` (which are introduced but are generally out of scope for STA130)
 
 # 03 Data Visualization
 
