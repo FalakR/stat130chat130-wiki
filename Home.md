@@ -48,10 +48,12 @@
     1. conditional probability Pr(Y=y|X=x)
         1. ~text manipulation with `lambda`, `.replace`, `re`~
 
-
 **Out of scope**
 1. Material covered in future weeks
 2. Anything not substantively addressed above...
 3. ...such as modular code design (with `def` based functions or `classes`)
 4. ...dictionary iteration (which has been removed from the above material)
 5. ...text manipulation with `lambda`, `.replace`, `re` (which are introduced but are generally out of scope for STA130)
+
+# 01 Data Visualization
+
