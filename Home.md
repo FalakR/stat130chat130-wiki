@@ -61,11 +61,10 @@
     1. plotting... plotly, seaborn, matplotlib, pandas
 2. [histograms](03.2) and the [range](03.2) and [IQR](03.2)
     1. legends and annotations
-4. [boxplots](03.3)
+4. [boxplots](03.3) and [outliers](03.3)
     1. kernel density estimation
 3. [skew](03.4) and [multimodality](03.4) 
     1. [mean versus median](03.4) and [normality and standard deviations](03.4)
-5. [outliers](03.5)
 
 **Out of scope**
 1. Material covered in future weeks
