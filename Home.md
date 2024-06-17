@@ -6,7 +6,7 @@
 4. Course [wiki-textbook](https://github.com/pointOfive/STA130_ChatGPT/wiki/)
 
 # 01 Data Summarization
-**TUT/LEC Topics**
+
 1. importing libraries... like [`pandas`](01.1)
 2. loading data... with [`pd.read_csv()`](01.2)
     1. parameters and arguments 
@@ -20,7 +20,7 @@
 6. removing missing data... with [`df.dropna()`](01.6) and [`del df['col']`](01.6)
     1. dictionary `dict()` objects
 7. grouping and aggregation.... with [`df.groupby("col1")["col2"].describe()`](01.7)
-8. New LEC topics
+8. Additional LEC topics
     1. sorting and (0-based) indexing
     2. subsetting and boolean selection
 
@@ -44,7 +44,7 @@
 4. more loops... such as [`for i,x in enumerate(a_list)`](02.4)
     1. ~`for key,val in dictionary.items()` and `dictionary.keys()` and `dictionary.values()`~
 5. logical flow control... with [`if`](02.5)/[`else`](02.5)/[`elif`](02.5)
-6. New LEC topics
+6. Additional LEC topics
     1. conditional probability Pr(Y=y|X=x)
         1. ~text manipulation with `.apply(lambda x: ...)`, `.replace()`, `re`~
 
@@ -61,10 +61,15 @@
     1. plotting... plotly, seaborn, matplotlib, pandas
 2. [histograms](03.2) and the [range](03.2) and [IQR](03.2)
     1. legends and annotations
-4. [boxplots](03.3) and [outliers](03.3)
-    1. kernel density estimation
-3. [skew](03.4) and [multimodality](03.4) 
+3. [boxplots](03.3) and [outliers](03.3)
+    1. figure panels and kernel density estimation "violin plots"
+4. [skew](03.4) and [multimodality](03.4) 
     1. [mean versus median](03.4) and [normality and standard deviations](03.4)
+    2. log transformations
+5. Additional LEC topics
+    1. samples versus populations (distributions) / statistics versus parameters?
+    2. normal distributions
+    3. more `from scipy import stats` (re: `stats.multinomial`) with `stats.norm` and `stats.poisson`
 
 **Out of scope**
 1. Material covered in future weeks
