@@ -37,7 +37,7 @@
     1. `type()` not "types of data" like quantitative or qualitative
     2. `str` (and `sentence.split()`) versus `int` versus `float` versus `bool`
     3. operator overloading polymorphism with `+` and `.sum()`
-2. another key data type... [np.array](02.2)
+2. another key data type... [`np.array`](02.2)
     1. `from scipy import stats`, `stats.multinomial`, and probability
 3. loops... [`for i in range(n)`](02.3) and [`print()`](02.3)
     1. `for x in lst` and `for word in sentence.split()` and 
