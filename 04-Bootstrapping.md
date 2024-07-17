@@ -1,3 +1,5 @@
+# Bootstrapping
+
 Bootstrapping is a statistical method that involves resampling with replacement from a sample to create many simulated samples. It is used to estimate the sampling distribution of a statistic (like the mean) and to assess the uncertainty of estimates.
 
 **Steps in Bootstrapping**
@@ -93,3 +95,65 @@ df = pd.DataFrame({'sample_averages': my_theoretical_population_sample_means})
 # Create a histogram to visualize the bootstrapped sample means
 px.histogram(df, x='sample_averages')
 ```
+
+# Confidence
+
+**Interpretation of Confidence Intervals**
+
+If we calculate a 95% confidence interval for a population mean, it means we are 95% confident that the interval contains the true population mean. This does not mean that there is a 95% probability that the interval contains the true mean; rather, it means that if we were to take many samples and build a confidence interval from each of them, we expect about 95% of those intervals to contain the true mean.
+
+# Confidence Intervals
+
+A confidence interval is a range of values that is likely to contain a population parameter with a certain level of confidence. It provides an estimated range that is likely to include the true value of the parameter we are interested in.
+
+**Steps to Calculate Confidence Intervals**
+
+1. **Collect Sample Data:** Gather data from a sample of the population.
+2. **Calculate the Sample Statistic:** Calculate the mean or other statistic of interest from the sample.
+3. **Determine the Confidence Level:** Common choices are 90%, 95%, or 99%.
+4. **Calculate the Margin of Error:** Use statistical formulas to calculate the margin of error based on the sample data and confidence level.
+5. **Construct the Confidence Interval:** Add and subtract the margin of error from the sample statistic to get the confidence interval.
+
+**Example Code for Calculating a 95% Confidence Interval**
+
+Let's walk through a Python code example to calculate a 95% confidence interval using bootstrapped sample means.
+
+**Step-by-Step Guide**
+
+**1. Import Libraries:** Ensure the necessary libraries for numerical operations and data manipulation are imported.
+
+```python
+import numpy as np
+import pandas as pd
+```
+
+**2. Calculate Quantiles:** Use the np.quantile function to calculate the 2.5th and 97.5th percentiles of the bootstrapped sample means. This gives us the 95% confidence interval.
+
+```python
+data_quantile = np.quantile(my_theoretical_population_sample_means, [0.025, 0.975])
+```
+
+**3. Print the Confidence Interval:** Output the calculated confidence interval.
+
+```python
+print(data_quantile)
+```
+
+**Complete Code Example**
+
+Here is the complete code to calculate a 95% confidence interval from the bootstrapped sample means:
+
+```python
+import numpy as np
+import pandas as pd
+
+# Assume my_theoretical_population_sample_means contains the bootstrapped sample means from previous section
+my_theoretical_population_sample_means = np.zeros(1000)  # Example initialization
+
+# Calculate the 95% confidence interval
+data_quantile = np.quantile(my_theoretical_population_sample_means, [0.025, 0.975])
+
+# Print the confidence interval
+print(data_quantile)
+```
+
