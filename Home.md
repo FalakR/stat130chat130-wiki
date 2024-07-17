@@ -5,7 +5,7 @@
 3. [Copilot](https://copilot.microsoft.com/) (or [ChatGPT](https://chat.openai.com/))
 4. Course [wiki-textbook](https://github.com/pointOfive/STA130_ChatGPT/wiki/)
 
-# 01 Data Summarization]
+# 01 Data Summarization
 
 **TUT/HW Topics**
 
