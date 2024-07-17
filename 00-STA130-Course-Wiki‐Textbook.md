@@ -105,7 +105,8 @@
 
 **LEC New Topics**
 
-1. bootstrapped confidence intervals
+1. confidence (and confidence levels)
+2. bootstrapped confidence intervals
 
 **Out of Scope**
 
