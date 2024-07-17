@@ -27,12 +27,10 @@
     2. dictionary `dict()` objects
     3. statistic calculation functions
 
-
 **LEC New Topics**
 
 1. sorting and (0-based) indexing
 2. subsetting and boolean selection
-
 
 **Out of Scope**
 
@@ -89,5 +87,25 @@
 4. ...such as kernel functions for kernel density estimation
 5. ...bokeh, shiny, d3, ...
 
-# 03 Bootstrapping
+# 04 Bootstrapping
+
+**TUT/HW Topics**
+
+1. 
+
+**LEC Extensions**
+
+2. 
+5. 
+    1. 
+**LEC New Topics**
+
+1. 
+
+**Out of Scope**
+
+1. Material covered in future weeks
+2. Anything not substantively addressed above...
+3. ...such as how to handle missing values using more advanced methods than just "ignoring" or "removing" them
+4. ...further "data wrangling topics" such as "joining" and "merging"; "pivoting", "wide to long", and "tidy" data formats; etc.
 
