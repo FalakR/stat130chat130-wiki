@@ -79,4 +79,5 @@
 4. ...such as kernel functions for kernel density estimation
 5. ...bokeh, shiny, d3, ...
 
+# 03 Bootstrapping
 
