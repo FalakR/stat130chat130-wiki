@@ -22,7 +22,7 @@
 2. parameters and arguments
 3. [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion)
 4. ~function side-effects~
-5. s
+5. 
     1. `.dtypes` and `.astype()`  
     2. dictionary `dict()` objects
     3. statistic calculation functions
