@@ -55,7 +55,7 @@ pd.read_csv("./path/to/filename.csv") # "." denotes the "current directory"
 pd.read_csv("https://www.url.com/path/to/filename.csv")
 ```
 
-### Using URL links
+**Using URL links**
 
 When accessing an online file, you must link to an actual "raw" `.csv` file.
 - This link "looks like" an actual `.csv` file, **but it is not**: [https://github.com/mwaskom/seaborn-data/blob/master/titanic.csv](https://github.com/mwaskom/seaborn-data/blob/master/titanic.csv)
@@ -75,7 +75,7 @@ titanic_df = pd.read_csv(working_url)
 # links directly to an actual "raw" `.csv` file
 ```
 
-### Extensions
+**Extensions**
 
 Here are some parameters of the `pd.read_csv` method that can be used to address somewhat common special cases...
 - `encoding` for different character sets
