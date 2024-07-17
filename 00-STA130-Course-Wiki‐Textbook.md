@@ -91,21 +91,26 @@
 
 **TUT/HW Topics**
 
-1. 
+1. simulation
+2. `df.sample(n=n_, frac=1, replace=False)`
+3. [the sampling distribution of the mean](04-Bootstrapping#Variability/Uncertainty-of-the-Sample-Mean)
+4. standard deviation versus standard error
+5. how standard error is driven by n
 
 **LEC Extensions**
 
-2. 
-5. 
-    1. 
+5. skewed distributions
+    1. bootstrapping
+    2. not bootstrapping
+
 **LEC New Topics**
 
-1. 
+1. bootstrapped confidence intervals
 
 **Out of Scope**
 
 1. Material covered in future weeks
 2. Anything not substantively addressed above...
-3. ...such as how to handle missing values using more advanced methods than just "ignoring" or "removing" them
-4. ...further "data wrangling topics" such as "joining" and "merging"; "pivoting", "wide to long", and "tidy" data formats; etc.
+3. ...such as the **Central Limit Theorem (CLT)**, **Law of Large Numbers (LLN)**, and theoretical "x-bar plus/minus about 2 standard errors" confidence intervals (based on the so-called "pivot" form)
+4. ... the alternative sampling function `np.random.choice(size, p, replace=True)` which will be introduced for different purposes later
 
