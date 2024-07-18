@@ -1,3 +1,33 @@
+**TUT/HW Topics**
+
+1. ["types of data"](03-Data-Visualization#Types-III)... continuous, discrete, nominal and ordinal categorical, and binary
+2. [bar plots](03-Data-Visualization#Bar-plots-and-modes) and the [mode](03-Data-Visualization#Bar-plots-and-modes)    
+3. [histograms](03-Data-Visualization#Histograms)
+4. [box plots](03-Data-Visualization#Box-plots-and-spread), [range](03-Data-Visualization#Box-plots-and-spread), [IQR](03-Data-Visualization#Box-plots-and-spread) and [outliers](03-Data-Visualization#Box-plots-and-spread)
+5. [skew](03-Data-Visualization#skew-and-multimodality) and [multimodality](03-Data-Visualization#skew-and-multimodality) 
+    1. [mean versus median](03-Data-Visualization#skew-and-multimodality)
+    2. [normality and standard deviations](03-Data-Visualization#skew-and-multimodality)
+    
+**LEC Extensions**
+
+2. plotting... plotly, seaborn, matplotlib, pandas
+3. kernel density estimation "violin plots"
+4. legends, annotations, figure panels
+5. log transformations
+
+**LEC New Topics**
+
+1. populations [`from scipy import stats`](03-Data-Visualization#Populations) (re: `stats.multinomial` and `np.random.choice()`) with `stats.norm` and `stats.poisson`
+2. [samples](03-Data-Visualization#Sampling) from populations (distributions) 
+3. [statistics estimate parameters](03-Data-Visualization#Statistics-Estimate-Parameters)
+
+**Out of scope**
+1. Material covered in future weeks
+2. Anything not substantively addressed above...
+3. ...such as expectation, moments, integration, heavy tailed distributions...
+4. ...such as kernel functions for kernel density estimation
+5. ...bokeh, shiny, d3, ...
+
 
 # TUT/HW Topics
 
@@ -198,92 +228,79 @@ A normal distribution has several key features:
 
 # LEC New Topics
 
-## Sampling
+## Populations and Distributions
 
-> 1. [samples](03-Data-Visualization#Sampling) versus populations (distributions) / statistics versus parameters?
+> 1. populations [`from scipy import stats`](03-Data-Visualization#Populations-and-Distributions) (re: `stats.multinomial` and `np.random.choice()`) with `stats.norm` and `stats.poisson`
 
-In statistics, sampling is the process of selecting a subset of individuals from a population to estimate characteristics of the whole population. It is often impractical or impossible to collect data from an entire population, so we rely on samples to make inferences.
+A **populations** is generally a theoretical idea that imagines the collection of all possible values the **observations** made for a **variable** could hypothetically be. It can refer to concrete group, such as "All Canadians" or "All UofT Students" or "All UofT International Students"; but, for all but very small populations, it would for all practical purposes not be possible to actually measure every **observation** in a **population** that could possibly occur.
 
-**Why Sampling is Important**
-
-- **Cost-Effective:** Collecting data from a sample is usually less expensive than collecting data from the entire population.
-- **Time-Saving:** Sampling can save time as data collection and analysis are faster with smaller datasets.
-- **Feasibility:** In some cases, it's impossible to measure the entire population, so sampling is the only practical approach.
-
-
-## Populations 
-
-> 2. populations [`from scipy import stats`](03-Data-Visualization#Populations) (re: `stats.multinomial` and `np.random.choice()`) with `stats.norm` and `stats.poisson`
-
-**Theoretical Populations**
-
-In statistics, a theoretical population is an idealized group of data points that represent a perfect example of a distribution. It is not always possible to collect data from the entire population, so theoretical populations help statisticians to make inferences and predictions.
-
-**Creating a Theoretical Population**
-
-To create a theoretical population, we use mathematical functions to define a distribution. In this section, we will demonstrate how to create and visualize a theoretical population using Python.
-
-**Step-by-Step Guide**
-
-1. **Import Libraries:** We need to import the necessary libraries to handle statistical functions and plotting. We use plotly.express for visualization, scipy.stats for statistical functions, numpy for numerical operations, and pandas for data manipulation.
+In statistics, we often imagine a theoretical population as an idealized group of "all possible data points"; and, when we represent these mathematical or numerical, we call them **distributions**. We have already seen several of these **distributions**.
 
 ```python
-import plotly.express as px
+# The first we saw was the Multinomial distribution
 from scipy import stats
-import numpy as np
-import pandas as pd
+possible_observations = [1,2,3]
+observation_frequency = [0.6,0.3,0.1]
+n = 10 # sample size
+Multinomial_distribution_object = stats.multinomial(possible_observations, p=observation_frequency)
 
-2. **Define Parameters:** We define the mean (mu) and standard deviation (sigma) of our normal distribution. These parameters determine the shape and spread of the distribution.
+# Two special cases of the Multinomial distribution are
 
-```python
-mu, sigma = 1, 0.33
+# - the Binomial distribution
+p = 0.5 # chance of getting a success ("1" as opposed to "0") <- doesn't need to be 0.5
+Binomial_distribution_object = stats.multinomial([0,1], p=p, n=n) # or `stats.binom(p=p)`
+
+# - The Bernoulli distribution
+Bernoulli_distribution_object = stats.multinomial([0,1], p=p) # or `stats.bernoulli(p=p)`
+
+# Some other distributions are the Normal, Poisson, and Gamma distributions 
+
+μ = 0 # mean parameter
+σ = 1 # standard deviation parameter
+Normal_distribution_object = stats.norm(loc=μ, scale=σ)
+
+λ = 1 # mean-variance parameter
+Poisson_distribution_object = stats.poisson(loc=λ)
+
+α # shape parameter
+θ # scale parameter
+Gamma_distribution_object = stats.gamma(a=α, scale=θ)
 ```
 
-3. **Create Distribution:** Using the stats.norm function, we create a normal distribution with our specified mean and standard deviation.
+## Sampling 
+
+> 2. [samples](03-Data-Visualization#Sampling) from populations (distributions) 
+
+In statistics, sampling refers to the process of selecting a subset of individuals from a population. Ideally, the sample should be collected in such a way that it is representative of the population. This is because the primary purpose of sampling is to estimate the characteristics of the whole population when it is impractical or impossible to collect data from an entire population. Estimating population characteristics based on a sample is called inference.
 
 ```python
-my_theoretical_population = stats.norm(loc=mu, scale=sigma)
+# Samples can be taken from the Multinomial distributions (and special cases) in the code above 
+# using the "random variable samples" `.rvs(size=n)` method of the distribution objects
+
+Multinomial_distribution_object.rvs(size=n)
+Binomial_distribution_object.rvs(size=n)
+Bernoulli_distribution_object.rvs(size=n)
+
+# Which are correspondingly correspondingly equivalent to the following
+np.random.choice(possible_observations, p=observation_frequency, size=n, replace=True)
+np.random.choice([0,1], p=p, size=n, replace=True) 
+np.random.choice([0,1], p=p, size=1, replace=True) 
+
+# And this is analogously done for the Normal, Poisson, and Gamma distributions objects
+Normal_distribution_object.rvs(size=n) 
+Poisson_distribution_object.rvs(size=n) 
+Gamma_distribution_object.rvs(size=n)
 ```
 
-4. **Generate Data Points:** We generate a range of values over which we want to evaluate our distribution. The np.linspace function creates an array of values evenly spaced within a specified range.
+The $n$ samples from any of the above calls would typically be notated as $x_1, x_2, \cdots, x_n$.
 
-```python
-support = np.linspace(-1, 3, 100)
-```
-5. **Calculate Density:** We calculate the probability density function (PDF) of our normal distribution over the range of values. The PDF gives us the density of the distribution at each point.
+## Statistics Estimate Parameters 
 
-```python
-df = pd.DataFrame({'x': support, 'density': my_theoretical_population.pdf(support)})
-```
+> 3. [statistics estimate parameters](03-Data-Visualization#Statistics-Estimate-Parameters)
 
-6. **Visualize Distribution:** We use Plotly Express to create a line plot of our theoretical population. The plot displays the density of the distribution across the range of values.
+The greek letters above (μ, σ, λ, α, and θ) are the parameters of their corresponding distributions. Parameters are the characteristics of population which we are trying to estimate by sampling. To make inferences on the population parameters, we estimate the parameter values with appropriately constructed statistics (of samples). For example:
 
-```python
-px.line(df, x='x', y='density')
-```
-
-**Complete Code Example**
-
-Here is the complete code to create and visualize a theoretical population:
-
-```python
-import plotly.express as px
-from scipy import stats
-import numpy as np
-import pandas as pd
-
-# Define the mean and standard deviation
-mu, sigma = 1, 0.33
-
-# Create the theoretical population
-my_theoretical_population = stats.norm(loc=mu, scale=sigma)
-
-# Generate a range of values
-support = np.linspace(-1, 3, 100)
-
-# Calculate the density of the distribution at each point
-df = pd.DataFrame({'x': support, 'density': my_theoretical_population.pdf(support)})
-
-# Create a line plot of the theoretical population
-px.line(df, x='x', y='density')
-```
+- The population mean of a Normal distribution μ is estimated by the sample mean $\bar x = \frac{1}{n}\sum_{n=1}^n x_i$
+- The population standard deviation of a normal distribution σ is estimated by the sample standard deviation $s = \sqrt{\frac{1}{n-1}\sum_{n=1}^n (x_i-\bar x)}$
+- The population mean of a Poisson distribution λ (which is also the variance poisson distribution population) is estimated by the sample mean $\bar x$ or the sample variance $s^2$
+- And the shape α and scale θ parameters of a Gamma distribution can also be estimated, but the statistics for estimating these are a little more complicated than the examples above
