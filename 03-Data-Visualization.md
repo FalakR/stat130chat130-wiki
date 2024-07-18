@@ -213,7 +213,7 @@ In statistics, sampling is the process of selecting a subset of individuals from
 
 ## Populations 
 
-> populations [`from scipy import stats`](03-Data-Visualization#Populations) (re: `stats.multinomial` and `np.random.choice()`) with `stats.norm` and `stats.poisson`
+> 2. populations [`from scipy import stats`](03-Data-Visualization#Populations) (re: `stats.multinomial` and `np.random.choice()`) with `stats.norm` and `stats.poisson`
 
 **Theoretical Populations**
 
