@@ -300,7 +300,11 @@ The $n$ samples from any of the above calls would typically be notated as $x_1, 
 
 The greek letters above (μ, σ, λ, α, and θ) are the parameters of their corresponding distributions. Parameters are the characteristics of population which we are trying to estimate by sampling. To make inferences on the population parameters, we estimate the parameter values with appropriately constructed statistics (which are mathematical functions of) samples. For example:
 
-- The population mean of a Normal distribution μ is estimated by the sample mean $\bar x = \frac{1}{n}\sum_{n=1}^n x_i$
-- The population standard deviation of a normal distribution σ is estimated by the sample standard deviation $s = \sqrt{\frac{1}{n-1}\sum_{n=1}^n (x_i-\bar x)}$
+- The population mean of a Normal distribution μ is estimated by the sample mean 
+
+  $$\bar x = \frac{1}{n}\sum_{n=1}^n x_i$$
+- The population standard deviation of a normal distribution σ is estimated by the sample standard deviation 
+
+  $$s = \sqrt{\frac{1}{n-1}\sum_{n=1}^n (x_i-\bar x)}$$
 - The population mean of a Poisson distribution λ (which is also the variance poisson distribution population) is estimated by the sample mean $\bar x$ or the sample variance $s^2$
 - And the shape α and scale θ parameters of a Gamma distribution can also be estimated, but the statistics for estimating these are a little more complicated than the examples above
