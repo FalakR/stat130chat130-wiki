@@ -5,6 +5,7 @@
 3. [Copilot](https://copilot.microsoft.com/) (or [ChatGPT](https://chat.openai.com/))
 4. Course [wiki-textbook](https://github.com/pointOfive/STA130_ChatGPT/wiki/)
 
+
 # 01 Data Summarization
 
 **TUT/HW Topics**
@@ -39,29 +40,40 @@
 3. ...such as how to handle missing values using more advanced methods than just "ignoring" or "removing" them
 4. ...further "data wrangling topics" such as "joining" and "merging"; "pivoting", "wide to long", and "tidy" data formats; etc.
 
+
 # 02 Coding
 
-1. first data types... [`tuple`](02.1), [`list`](02.1), [`dict`](02.1)
+**TUT/HW Topics**
+
+1. first data types... [`tuple`](02-Coding#Types-II), [`list`](02-Coding#Types-II), [`dict`](02-Coding#Types-II)
+2. another key data type... [`np.array`](02-Coding#np.array)
+3. loops... [`for i in range(n)`](02-Coding#for-loops) and [`print()`](02-Coding#for-loops)
+4. logical flow control... with [`if`](02-Coding#Logical-Flow-Control)/[`else`](02-Coding#Logical-Flow-Control)
+    1. [`try-except` blocks](02-Coding#Logical-Flow-Control)
+
+**LEC Extensions**
+
+1. 
     1. `type()` not "types of data" like quantitative or qualitative
-    2. `str` (and `sentence.split()`) versus `int` versus `float` versus `bool`
+    2. `str` (and `sentence.split()`) as opposed to `int` versus `float` versus `bool`
     3. operator overloading polymorphism with `+` and `.sum()`
-2. another key data type... [`np.array`](02.2)
-    1. `from scipy import stats`, `stats.multinomial`, and probability
-3. loops... [`for i in range(n)`](02.3) and [`print()`](02.3)
-    1. `for x in lst` and `for word in sentence.split()` and 
-4. more loops... such as [`for i,x in enumerate(a_list)`](02.4)
-    1. ~`for key,val in dictionary.items()` and `dictionary.keys()` and `dictionary.values()`~
-5. logical flow control... with [`if`](02.5)/[`else`](02.5)/[`elif`](02.5)
-6. Additional LEC topics
+2. `from scipy import stats`, `stats.multinomial`, and probability
     1. conditional probability Pr(Y=y|X=x)
+3.
+    1. [`for x in lst`](02-Coding#More-Loops) and [`for word in sentence.split()`](02-Coding#More-Loops) and 
         1. ~text manipulation with `.apply(lambda x: ...)`, `.replace()`, `re`~
+    2. more loops... such as [`for i,x in enumerate(a_list)`](02-Coding#More-Loops)
+        1. ~`for key,val in dictionary.items()` and `dictionary.keys()` and `dictionary.values()`~
+4. [`elif`](02-Coding#Logical-Flow-Control)
 
 **Out of scope**
+
 1. Material covered in future weeks
 2. Anything not substantively addressed above...
 3. ...such as modular code design (with `def` based functions or `classes`)
 4. ...such as dictionary iteration (which has been removed from the above material)
 5. ...such as text manipulation with `.apply(lambda x: ...)`, `.replace()`, `re` (which are introduced but are generally out of scope for STA130)
+
 
 # 03 Data Visualization
 
