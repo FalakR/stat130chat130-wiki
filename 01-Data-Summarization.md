@@ -30,7 +30,7 @@
 3. ...such as how to handle missing values using more advanced methods than just "ignoring" or "removing" them
 4. ...further "data wrangling topics" such as "joining" and "merging"; "pivoting", "wide to long", and "tidy" data formats; etc.
 
-# import
+## import
 
 > 1. importing libraries... like [`pandas`](01-Data-Summarization#import)
 
