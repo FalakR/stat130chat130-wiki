@@ -1,3 +1,31 @@
+**TUT/HW Topics**
+
+1. [simulation](04-Bootstrapping#Simulation) (with `for` loops and `from scipy import stats`)
+2. [the sampling distribution of the mean](04-Bootstrapping#Variability/Uncertainty-of-the-Sample-Mean)
+3. [standard deviation versus standard error](04-Bootstrapping#Standard-Deviation-versus-Standard-Error)
+4. [how standard error is driven by n](04-Bootstrapping#How-n-Drives-Standard-Error)
+
+**LEC Extensions**
+
+1. `df.sample(n=n_, frac=1, replace=False)`
+    1. skewed distributions
+    2. bootstrapping
+    3. not bootstrapping
+
+**LEC New Topics**
+
+1. confidence (and confidence levels)
+    1. "double" `for` loops
+2. bootstrapped confidence intervals
+
+**Out of Scope**
+
+1. Material covered in future weeks
+2. Anything not substantively addressed above...
+3. ...such as the **Central Limit Theorem (CLT)**, **Law of Large Numbers (LLN)**, and theoretical "x-bar plus/minus about 2 standard errors" confidence intervals (based on the so-called "pivot" form)
+4. ... the alternative sampling function `np.random.choice(size, p, replace=True)` which will be introduced for different purposes later
+
+
 # TUT/HW Topics
 
 ## Simulation
@@ -144,6 +172,9 @@ So, the larger the sample size $n$, the smaller **standard error** (so the small
 
 > There might be a question as to whether or not the **sampling distribution of the sample mean** should be increasingly centered on the corresponding population mean μ, and the answer is "yes" under the usual assumptions underlying a statistical analysis.
 
+# LEC Extensions
+
+# LEC New Topics
 
 ## Bootstrapping
 
@@ -243,13 +274,13 @@ df = pd.DataFrame({'sample_averages': my_theoretical_population_sample_means})
 px.histogram(df, x='sample_averages')
 ```
 
-# Confidence
+## Confidence
 
 **Interpretation of Confidence Intervals**
 
 If we calculate a 95% confidence interval for a population mean, it means we are 95% confident that the interval contains the true population mean. This does not mean that there is a 95% probability that the interval contains the true mean; rather, it means that if we were to take many samples and build a confidence interval from each of them, we expect about 95% of those intervals to contain the true mean.
 
-# Confidence Intervals
+## Confidence Intervals
 
 A confidence interval is a range of values that is likely to contain a population parameter with a certain level of confidence. It provides an estimated range that is likely to include the true value of the parameter we are interested in.
 
