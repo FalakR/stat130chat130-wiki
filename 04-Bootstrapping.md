@@ -90,7 +90,7 @@ Here are some questions to answer to make sure you understand what this simulati
 2. What is the effect of appending the `.mean()` method onto `normal_distribution_object.rvs(size=n)` inside the simulation `for` loop?
 3. Are the histograms from the two simulations comparable? If not, why are they not really comparable? 
 
-As this second simulation example shows, simulation can explore much more interesting downstream behaviours of sampling processes besides just the behavior or "sampling a single observation from a distribution".
+As this second simulation example shows, simulation can explore much more interesting downstream behaviours of sampling processes besides just the behavior or "sampling a single observation from a Normal distribution" (or some other distribution if you were to sample from something other than a Normal distribution).
 
 ## Bootstrapping
 
