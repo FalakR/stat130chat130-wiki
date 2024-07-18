@@ -298,7 +298,7 @@ The $n$ samples from any of the above calls would typically be notated as $x_1, 
 
 > 3. [statistics estimate parameters](03-Data-Visualization#Statistics-Estimate-Parameters)
 
-The greek letters above (μ, σ, λ, α, and θ) are the parameters of their corresponding distributions. Parameters are the characteristics of population which we are trying to estimate by sampling. To make inferences on the population parameters, we estimate the parameter values with appropriately constructed statistics (of samples). For example:
+The greek letters above (μ, σ, λ, α, and θ) are the parameters of their corresponding distributions. Parameters are the characteristics of population which we are trying to estimate by sampling. To make inferences on the population parameters, we estimate the parameter values with appropriately constructed statistics (which are mathematical functions of) samples. For example:
 
 - The population mean of a Normal distribution μ is estimated by the sample mean $\bar x = \frac{1}{n}\sum_{n=1}^n x_i$
 - The population standard deviation of a normal distribution σ is estimated by the sample standard deviation $s = \sqrt{\frac{1}{n-1}\sum_{n=1}^n (x_i-\bar x)}$
