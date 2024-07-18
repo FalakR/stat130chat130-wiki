@@ -51,7 +51,7 @@
 4. logical flow control... with [`if`](02-Coding#Logical-Flow-Control)/[`else`](02-Coding#Logical-Flow-Control)
     1. [`try-except` blocks](02-Coding#Logical-Flow-Control)
 
-**LEC Extensions**
+**LEC Extensions / New Topics**
 
 1. 
     1. `type()` not "types of data" like quantitative or qualitative
