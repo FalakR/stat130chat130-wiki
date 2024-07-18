@@ -46,7 +46,7 @@
 **TUT/HW Topics**
 
 1. first data types... [`tuple`](02-Coding#Types-II), [`list`](02-Coding#Types-II), [`dict`](02-Coding#Types-II)
-2. another key data type... [`np.array`](02-Coding#np.array)
+2. another key data type... [`np.array`](02-Coding#np.array) [and `np.random.choice`]
 3. loops... [`for i in range(n)`](02-Coding#for-loops) and [`print()`](02-Coding#for-loops)
 4. logical flow control... with [`if`](02-Coding#Logical-Flow-Control)/[`else`](02-Coding#Logical-Flow-Control)
     1. [`try-except` blocks](02-Coding#Logical-Flow-Control)
@@ -57,7 +57,7 @@
     1. `type()` not "types of data" like quantitative or qualitative
     2. `str` (and `sentence.split()`) as opposed to `int` versus `float` versus `bool`
     3. operator overloading polymorphism with `+` and `.sum()`
-2. `from scipy import stats`, `stats.multinomial`, and probability
+2. `from scipy import stats`, `stats.multinomial`, and probability [and `np.random.choice`]
     1. conditional probability Pr(Y=y|X=x)
 3.
     1. [`for x in lst`](02-Coding#More-Loops) and [`for word in sentence.split()`](02-Coding#More-Loops) and 
