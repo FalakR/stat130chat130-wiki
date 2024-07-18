@@ -92,6 +92,59 @@ Here are some questions to answer to make sure you understand what this simulati
 
 As this second simulation example shows, simulation can explore much more interesting downstream behaviours of sampling processes besides just the behavior or "sampling a single observation from a Normal distribution" (or some other distribution if you were to sample from something other than a Normal distribution).
 
+## Variability/Uncertainty of the Sample Mean
+
+> 2. [the sampling distribution of the mean](04-Bootstrapping#Variability/Uncertainty-of-the-Sample-Mean)
+
+The previously code simulated the so-called **sampling distribution of the mean**, which captures the variability/uncertainty of the sample mean. So, just as data points are sampled from some distribution, statistics (which are mathematical functions) of samples as well can be viewed on a higher level as themselves (that is, the statistics themselves) as being "a sample" from the "distribution of the statistic". 
+
+The concept that a statistics (such as the sample mean $\bar x$) would itself be drawn from its own distribution is very intuitive when viewed from the perspective of simulation (as demonstrated in the example given in the previous section). 
+
+> The theory related to the **sampling distribution of the mean** is known as **the Central Limit Theory (CLT)** and relates as well to the so called **Law of Large Numbers (LLN)**; but, these topics are beyond the scope of STA130 -- and not the focus of STA130 -- so for STA130 it's very important that you approach understanding sampling distributions through a simulation-based perspective. 
+
+
+## Standard Deviation versus Standard Error
+
+> 3. [standard deviation versus standard error](04-Bootstrapping#Standard-Deviation-versus-Standard-Error)
+
+A simple summary of the difference of these two concepts is that 
+1. "standard deviation" refers to the **standard deviation** of a sample or a population; whereas, 
+2. "standard error" (that is, the **standard error of the mean**) refers to the "standard deviation of the sampling distribution of the sample mean"
+ 
+The **sample standard deviation** is defined as 
+
+$$s = \sqrt{\frac{1}{n-1}\sum_{n=1}^n (x_i-\bar x)}$$
+
+and (as you can see with some inspection and consideration) it measures something how spread out the data is by measuring something like "how far on average" individual data points are from the sample mean $\bar x$ of the data set. **Standard deviation** describes the variation (or dispersion) in a set of data points. A high standard deviation indicates that the data points are spread out over a wide range of values, while a low standard deviation indicates that they are clustered closely around the mean.
+
+> Be careful to distinguish between the **sample standard deviation** statistic $s$ and the Normal distribution **standard deviation parameter** σ (which $s$ estimates): $s$ is the sample analog of the population concept σ.
+
+The **standard error of the mean** is (due to the **Law of Large Numbers (LLN)**) defined as 
+
+$$s_{\bar x} = \frac{s}{\sqrt{n}}$$ 
+
+and measures how much the sample mean (average) of the data is expected to vary from the true population mean (such as μ if the sample was drawn from a Normal distribution). The **standard error of the mean** therefore captures the precision of the sample mean as an estimate of the population mean. 
+
+> There are key differences between the **sample standard deviation** and the **standard error of the mean** that should be readily recognizable. First, the **standard deviation** applies to the entire sample or population, reflecting the variability among individual data points; whereas, the **standard error of the mean** only applies to the sample mean and reflects the variability/uncertainty of the sample mean ($\bar x$) as an estimate of the population mean (μ). Second, the **standard deviation** is independent of the sample size since the size of a sample is not the determining factor in how variability there is between individual data points (since it is the nature of the variability in the individual data points in the population which determines this); whereas, **the standard error of the mean** decreases as the sample size increases, indicating more precise estimates with larger samples.
+
+> A theoretical form that you will see related to the **standard error of the mean** $s_{\bar x}$ is 
+> 
+> $$ \bar x \pm 1.96 s_{\bar x}$$ 
+> 
+> which produces a 95% confidence interval based on the **Central Limit Theorem (CLT)** using the so-called "pivot" trick. 
+> However, since STA130 is focussed on understanding the variability/uncertainty of the sample mean from a simulation-based perspective, this methodological framework is beyond the scope and not the focus of STA130. 
+
+## How n Drives Standard Error
+
+> 4. [how standard error is driven by n](04-Bootstrapping#How-n-Drives-Standard-Error)
+
+As seen above, **standard error of the mean** is $s_{\bar x} = \frac{s}{\sqrt{n}}$; so, the theoretical value of the **standard error** is calculated by dividing the standard deviation by the square root of the sample size $n$. 
+
+So, the larger the sample size $n$, the smaller **standard error** (so the smaller the "standard deviation of the sampling distribution of the sample mean"), and thus the more precisely the sample mean $\bar x$ estimates the population mean μ.
+
+> There might be a question as to whether or not the **sampling distribution of the sample mean** should be increasingly centered on the corresponding population mean μ, and the answer is "yes" under the usual assumptions underlying a statistical analysis.
+
+
 ## Bootstrapping
 
 Bootstrapping is a statistical method that involves resampling with replacement from a sample to create many simulated samples. It is used to estimate the sampling distribution of a statistic (like the mean) and to assess the uncertainty of estimates.
