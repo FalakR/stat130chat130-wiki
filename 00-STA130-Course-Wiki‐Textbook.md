@@ -77,20 +77,27 @@
 
 # 03 Data Visualization
 
-0. ["types of data"](03.0)... continuous, discrete, nominal and ordinal categorical, and binary
-1. [bar plots](03.1) and the [mode](03.1)
-    1. plotting... plotly, seaborn, matplotlib, pandas
-2. [histograms](03.2)
-    1. kernel density estimation "violin plots" 
-3. [box plots](03.3), [range](03.3), [IQR](03.3) and [outliers](03.3)
-    1. legends, annotations, figure panels
-4. [skew](03.4) and [multimodality](03.4) 
-    1. [mean versus median](03.4) and [normality and standard deviations](03.4)
-    2. log transformations
-5. Additional LEC topics
-    1. samples versus populations (distributions) / statistics versus parameters?
-    2. normal distributions
-    3. more `from scipy import stats` (re: `stats.multinomial`) with `stats.norm` and `stats.poisson`
+**TUT/HW Topics**
+
+1. ["types of data"](03-Data-Visualization#Types-III)... continuous, discrete, nominal and ordinal categorical, and binary
+2. [bar plots](03-Data-Visualization#Bar-plots-and-modes) and the [mode](03-Data-Visualization#Bar-plots-and-modes)    
+3. [histograms](03-Data-Visualization#Histograms)
+4. [box plots](03-Data-Visualization#Box-plots-and-spread), [range](03-Data-Visualization#Box-plots-and-spread), [IQR](03-Data-Visualization#Box-plots-and-spread) and [outliers](03-Data-Visualization#Box-plots-and-spread)
+5. [skew](03-Data-Visualization#skew-and-multimodality) and [multimodality](03-Data-Visualization#skew-and-multimodality) 
+    1. [mean versus median](03-Data-Visualization#skew-and-multimodality)
+    2. [normality and standard deviations](03-Data-Visualization#skew-and-multimodality)
+    
+**LEC Extensions**
+
+2. plotting... plotly, seaborn, matplotlib, pandas
+3. kernel density estimation "violin plots"
+4. legends, annotations, figure panels
+5. log transformations
+
+**LEC New Topics**
+
+1. [samples](03-Data-Visualization#Sampling) versus populations (distributions) / statistics versus parameters?
+2. [more `from scipy import stats`](03-Data-Visualization#Populations) (re: `stats.multinomial` and `np.random.choice()`) with `stats.norm` and `stats.poisson`
 
 **Out of scope**
 1. Material covered in future weeks
