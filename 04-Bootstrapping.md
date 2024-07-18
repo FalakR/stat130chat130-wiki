@@ -1,4 +1,98 @@
-# Bootstrapping
+# TUT/HW Topics
+
+## Simulation
+
+> 1. [simulation](04-Bootstrapping#Simulation) (with `for` loops and `from scipy import stats`)
+
+In statistics, simulation refers to the process of repeating a sampling process a large number of times in order to understand some aspect of the behavior of the process. The following code visualizes a Normal distribution, and the subsequent code shows the simulation based visualization of the Normal distribution. 
+
+**A distribution:**
+
+```python
+# plotly.express provides visualization, scipy.stats provides distributions
+# numpy provides numerical support, and pandas organizes data
+import plotly.express as px
+from scipy import stats
+import numpy as np
+import pandas as pd
+
+# mean (mu) and standard deviation (sigma) parameters 
+# determine the location and spread of a normal distribution 
+mu, sigma = 1, 0.33
+normal_distribution_object = stats.norm(loc=mu, scale=sigma)
+
+# `np.linspace` creates an array of values evenly spaced within a range 
+# over which we will visualize the distribution
+support = np.linspace(-1, 3, 100)
+
+# probability density functions (PDFs) show the long term relative frequencies 
+# that will be seen when sampling from a distribution
+pdf_df = pd.DataFrame({'x': support, 'density': normal_distribution_object.pdf(support)})
+fig = px.line(pdf_df, x='x', y='density')
+fig.show()
+```
+
+**A simulation of a distribution:**
+
+```python
+n = 10000 # sample size
+normal_distribution_sample = np.zeros(n)
+
+for i in range(n):
+    normal_distribution_sample[i] = normal_distribution_object.rvs(size=1)[0]
+
+# or, more simply
+normal_distribution_sample = normal_distribution_object.rvs(size=n) 
+
+# Plot the PDF and sample histogram
+fig = go.Figure()
+
+# Add histogram using Plotly's built-in histogram functionality
+fig.add_trace(go.Histogram(x=normal_distribution_sample, 
+                           histnorm='probability density', 
+                           nbinsx=30, name='Sample Histogram', opacity=0.6))
+
+# Add PDF line
+fig.add_trace(go.Scatter(x=pdf_df['x'], y=pdf_df['density'], mode='lines', name='PDF'))
+
+# Update layout
+fig.update_layout(title='Normal Distribution PDF and Sample Histogram',
+                  xaxis_title='Value', yaxis_title='Density')
+```
+
+The sampling process being simulated is "sampling a single observation from a Normal distribution".  The number of simulations is `n` and the `for` loop repeats the simulation the sampling process a large number of times (as determined by `n`) in order to understand the behavior of the process of "sampling a single observation from a Normal distribution".  Of course, the `.rvs(size=n)` method let's us do this without a `for` loop by instead just using `normal_distribution_object.rvs(size=n)`.
+
+- Consider experimenting with different values of `n` to explore how the "size" of the simulation determines how well clearly the behavior of the process is understood.
+
+**Another simulation:**
+
+Consider the following alteration on the previous simulation.
+
+```python
+import plotly.express as px
+
+number_of_simulations = 1000
+n = 100 # sample size
+normal_distribution_sample_means = np.zeros(number_of_simulations)
+
+for i in range(number_of_simulations):
+    normal_distribution_sample_means[i] = normal_distribution_object.rvs(size=n).mean()
+
+df = pd.DataFrame({'Sample Mean': normal_distribution_sample_means})
+fig = px.histogram(df, x='Sample Mean', nbins=30, title='Histogram of Sample Means', 
+                   labels={'Sample Mean': 'Sample Mean', 'count': 'Frequency'})
+fig.show()
+```
+
+Here are some questions to answer to make sure you understand what this simulation is doing (compared to the previous simulation):
+
+1. Why is `number_of_simulations` introduced and why is it different than `n`?
+2. What is the effect of appending the `.mean()` method onto `normal_distribution_object.rvs(size=n)` inside the simulation `for` loop?
+3. Are the histograms from the two simulations comparable? If not, why are they not really comparable? 
+
+As this second simulation example shows, simulation can explore much more interesting downstream behaviours of sampling processes besides just the behavior or "sampling a single observation from a distribution".
+
+## Bootstrapping
 
 Bootstrapping is a statistical method that involves resampling with replacement from a sample to create many simulated samples. It is used to estimate the sampling distribution of a statistic (like the mean) and to assess the uncertainty of estimates.
 
