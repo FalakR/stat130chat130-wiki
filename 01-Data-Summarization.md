@@ -42,7 +42,7 @@ import pandas # original name usaged is `pandas.read_csv()`
 from pandas import read_csv # funtion only import usage is `read_csv()`
 ```
 
-# read_csv
+## read_csv
 
 > 2. loading data... with [`pd.read_csv()`](01-Data-Summarization#read_csv)
 
@@ -85,7 +85,7 @@ Here are some parameters of the `pd.read_csv` method that can be used to address
 - `skiprows` and `names` to control column names (and see more [here](https://note.nkmk.me/en/python-pandas-read-csv-tsv/))
  
 
-# Missingness I
+## Missingness I
 
 > 3. counting missing values... with [`df.isna.sum()`](01-Data-Summarization#Missingness-I)
 
@@ -126,7 +126,7 @@ print(missing_values_per_row)
 
 For more details regarding "boolean values and coercion", see [01.3.i.LEC](01.3.i.LEC).
 
-# Variables and Observations
+## Variables and Observations
 
 > 4. observations (rows) and variables (columns)... [`df.shape`](01-Data-Summarization#Variables-and-Observations) and [`df.columns`](01-Data-Summarization#Variables-and-Observations)
 
@@ -165,7 +165,7 @@ Variables can be [numerical (quantitative) or categorical (qualitative)](https:/
 
 > Missing values in datasets need to be handled carefully during analysis because they can affect the results. Different statistical methods and tools have their own ways of dealing with missing values, either by ignoring, removing them, or filling them in with estimated values.
 
-# Types I
+## Types I
 
 > 5. numeric versus non-numeric... [`df.describe()`](01-Data-Summarization#Types-I) and [`df.value_counts()`](01-Data-Summarization#Types-I)
 
@@ -193,7 +193,7 @@ print(numerical_stats)
 print(embarked_counts)
 ```
 
-# Missingness II
+## Missingness II
 
 > 6. removing missing data... with [`df.dropna()`](01-Data-Summarization#Missingness-II) and [`del df['col']`](01-Data-Summarization#Missingness-II)
 
@@ -218,7 +218,7 @@ df.dropna(subset=['col1', 'col2'], axis='columns', inplace=True)
 
 The order in which you remove rows or columns with missing values to some degree determines the number of non-missing values that are "thrown away" when rows and columns are removed... so proceed intentionally and cautiously to when removing data so you don't "unnecessarily" through away data when you're removing rows and columns from a dataset.
 
-# Grouping and Aggregation
+## Grouping and Aggregation
 
 > 7. grouping and aggregation.... with [`df.groupby("col1")["col2"].describe()`](01-Data-Summarization#Grouping-and-Aggregation)
 
@@ -232,9 +232,9 @@ Grouping and aggregation are powerful concepts in data analysis, particularly wi
 
 Missing values in the grouping column (`"col1"`) will result in a separate group if there are any, while the `.describe()` method automatically excludes missing values when calculating descriptive statistics for `"col2"`.
 
-**LEC Extensions**
+# LEC Extensions
 
-# Boolean Values and Coercion
+## Boolean Values and Coercion
 
 > 3. [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion)
 
