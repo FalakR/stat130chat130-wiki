@@ -121,8 +121,8 @@
 
 1. `df.sample(n=n_, frac=1, replace=False)`
     1. skewed distributions
-    1. bootstrapping
-    2. not bootstrapping
+    2. bootstrapping
+    3. not bootstrapping
 
 **LEC New Topics**
 
