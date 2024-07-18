@@ -30,6 +30,8 @@
 3. ...such as how to handle missing values using more advanced methods than just "ignoring" or "removing" them
 4. ...further "data wrangling topics" such as "joining" and "merging"; "pivoting", "wide to long", and "tidy" data formats; etc.
 
+# TUT/HW Topics
+
 ## import
 
 > 1. importing libraries... like [`pandas`](01-Data-Summarization#import)
@@ -230,5 +232,38 @@ Grouping and aggregation are powerful concepts in data analysis, particularly wi
 
 Missing values in the grouping column (`"col1"`) will result in a separate group if there are any, while the `.describe()` method automatically excludes missing values when calculating descriptive statistics for `"col2"`.
 
+**LEC Extensions**
 
+# Boolean Values and Coercion
 
+> 3. [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion)
+
+In pandas, **boolean** values are represented as `True` or `False`. When you use the `.isna()` method on a DataFrame, it returns a DataFrame of boolean values, where each value is `True` if the corresponding element is missing and `False` otherwise.
+
+**Coercion** refers to the conversion of one data type into another. In the case of `df.isna().sum()`, coercion happens implicitly when the `.sum()` method is called. The `.sum()` method treats `True` as `1` and `False` as `0` and sums these integer values. This is a form of coercion where boolean values are coerced into integers for the purpose of performing arithmetic operations.
+
+Here’s an example to illustrate this:
+
+```python
+import pandas as pd
+import numpy as np
+
+# Create a DataFrame with some missing values
+df = pd.DataFrame({
+    'A': [1, np.nan, 3],
+    'B': [4, 5, np.nan]
+})
+
+# Apply isna() to get a DataFrame of boolean values
+bool_df = df.isna()
+
+# Coerce boolean values to integers and sum them
+missing_values_sum = bool_df.sum()
+
+print(bool_df)
+print(missing_values_sum)
+```
+
+In the output, `bool_df` shows that in data in the DataFrame is boolean after applying `.isna()`. The `missing_values_sum` shows the sum of missing values per column, where `True` values have been coerced to `1` and summed up.
+
+> For more details regarding "counting missing values", see [01.3](01.3).
