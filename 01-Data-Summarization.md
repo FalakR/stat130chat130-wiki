@@ -124,7 +124,7 @@ print("Number of rows with at least one missing value:", rows_with_missing_value
 print(missing_values_per_row)
 ```
 
-For more details regarding "boolean values and coercion", see [01.3.i.LEC](01.3.i.LEC).
+For more details regarding "boolean values and coercion", see [Boolean Values and Coercion](01-Data-Summarization#Boolean-Values-and-Coercion).
 
 ## Variables and Observations
 
@@ -266,4 +266,4 @@ print(missing_values_sum)
 
 In the output, `bool_df` shows that in data in the DataFrame is boolean after applying `.isna()`. The `missing_values_sum` shows the sum of missing values per column, where `True` values have been coerced to `1` and summed up.
 
-> For more details regarding "counting missing values", see [01.3](01.3).
+> For more details regarding "counting missing values", see [Missingness I](01-Data-Summarization#Missingness-I) and [Missingness II](01-Data-Summarization#Missingness-II).
