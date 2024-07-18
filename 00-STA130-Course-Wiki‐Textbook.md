@@ -96,8 +96,10 @@
 
 **LEC New Topics**
 
-1. [samples](03-Data-Visualization#Sampling) versus populations (distributions) / statistics versus parameters?
-2. populations [`from scipy import stats`](03-Data-Visualization#Populations) (re: `stats.multinomial` and `np.random.choice()`) with `stats.norm` and `stats.poisson`
+1. populations [`from scipy import stats`](03-Data-Visualization#Populations) (re: `stats.multinomial` and `np.random.choice()`) with `stats.norm` and `stats.poisson`
+2. [samples](03-Data-Visualization#Sampling) from populations (distributions) 
+3. [statistics estimate parameters](03-Data-Visualization#Statistics-Estimate-Parameters)
+
 
 **Out of scope**
 1. Material covered in future weeks
@@ -110,21 +112,22 @@
 
 **TUT/HW Topics**
 
-1. simulation
-2. `df.sample(n=n_, frac=1, replace=False)`
-3. [the sampling distribution of the mean](04-Bootstrapping#Variability/Uncertainty-of-the-Sample-Mean)
-4. standard deviation versus standard error
-5. how standard error is driven by n
+1. [simulation](04-Bootstrapping#Simulation) (with `for` loops and `from scipy import stats`)
+2. [the sampling distribution of the mean](04-Bootstrapping#Variability/Uncertainty-of-the-Sample-Mean)
+3. standard deviation versus standard error
+4. how standard error is driven by n
 
 **LEC Extensions**
 
-5. skewed distributions
+1. `df.sample(n=n_, frac=1, replace=False)`
+    1. skewed distributions
     1. bootstrapping
     2. not bootstrapping
 
 **LEC New Topics**
 
 1. confidence (and confidence levels)
+    1. "double" `for` loops
 2. bootstrapped confidence intervals
 
 **Out of Scope**
