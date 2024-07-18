@@ -97,7 +97,7 @@
 **LEC New Topics**
 
 1. [samples](03-Data-Visualization#Sampling) versus populations (distributions) / statistics versus parameters?
-2. [more `from scipy import stats`](03-Data-Visualization#Populations) (re: `stats.multinomial` and `np.random.choice()`) with `stats.norm` and `stats.poisson`
+2. populations [`from scipy import stats`](03-Data-Visualization#Populations) (re: `stats.multinomial` and `np.random.choice()`) with `stats.norm` and `stats.poisson`
 
 **Out of scope**
 1. Material covered in future weeks
