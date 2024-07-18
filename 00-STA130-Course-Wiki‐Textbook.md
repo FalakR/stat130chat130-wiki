@@ -114,8 +114,8 @@
 
 1. [simulation](04-Bootstrapping#Simulation) (with `for` loops and `from scipy import stats`)
 2. [the sampling distribution of the mean](04-Bootstrapping#Variability/Uncertainty-of-the-Sample-Mean)
-3. standard deviation versus standard error
-4. how standard error is driven by n
+3. [standard deviation versus standard error](04-Bootstrapping#Standard-Deviation-versus-Standard-Error)
+4. [how standard error is driven by n](04-Bootstrapping#How-n-Drives-Standard-Error)
 
 **LEC Extensions**
 
