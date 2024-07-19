@@ -305,6 +305,6 @@ The greek letters above (μ, σ, λ, α, and θ) are the parameters of their cor
   $$\bar x = \frac{1}{n}\sum_{n=1}^n x_i$$
 - The population standard deviation of a normal distribution σ is estimated by the sample standard deviation 
 
-  $$s = \sqrt{\frac{1}{n-1}\sum_{n=1}^n (x_i-\bar x)}$$
+  $$s = \sqrt{\frac{1}{n-1}\sum_{n=1}^n (x_i-\bar x)^2}$$
 - The population mean of a Poisson distribution λ (which is also the variance poisson distribution population) is estimated by the sample mean $\bar x$ or the sample variance $s^2$
 - And the shape α and scale θ parameters of a Gamma distribution can also be estimated, but the statistics for estimating these are a little more complicated than the examples above
