@@ -141,7 +141,7 @@ A simple summary of the difference of these two concepts is that
  
 The **sample standard deviation** is defined as 
 
-$$s = \sqrt{\frac{1}{n-1}\sum_{n=1}^n (x_i-\bar x)}$$
+$$s = \sqrt{\frac{1}{n-1}\sum_{n=1}^n (x_i-\bar x)^2}$$
 
 and (as you can see with some inspection and consideration) it measures something how spread out the data is by measuring something like "how far on average" individual data points are from the sample mean $\bar x$ of the data set. **Standard deviation** describes the variation (or dispersion) in a set of data points. A high standard deviation indicates that the data points are spread out over a wide range of values, while a low standard deviation indicates that they are clustered closely around the mean.
 
