@@ -137,3 +137,29 @@
 3. ...such as the **Central Limit Theorem (CLT)**, **Law of Large Numbers (LLN)**, and theoretical "x-bar plus/minus about 2 standard errors" confidence intervals (based on the so-called "pivot" form)
 4. ... the alternative sampling function `np.random.choice(size, p, replace=True)` which will be introduced for different purposes later
 
+
+# 05 Hypothesis Testing
+
+**TUT/HW Topics**
+
+1. [null and alternative hypotheses](https://github.com/pointOfive/STA130_ChatGPT/wiki/05-Hypothesis-Testing#Null-and-Alternative-Hypotheses)
+2. the sampling distribution under the null 
+    1. one sample "difference" hypothesis tests with a "no effect" null
+3. [p-values](https://github.com/pointOfive/STA130_ChatGPT/wiki/05-Hypothesis-Testing#p-values)
+4. [one- or two-sided hypothesis tests](https://github.com/pointOfive/STA130_ChatGPT/wiki/05-Hypothesis-Testing#One--or-Two-Sided Hypothesis-Tests)
+    
+**LEC Extensions**
+
+2. 
+    1. one sample hypothesized parameter value tests
+3. using p-values
+
+**LEC New Topics**
+
+1. Type I and Type II errors
+
+**Out of Scope**
+
+1. Material covered in future weeks
+2. Anything not substantively addressed above...
+3. Simulation versus theoretical hypothesis testing frameworks, z-tests and t-tests, parametric versus nonparametric hypothesis testing frameworks, other tests such as Chi-squared or F-tests, etc...
