@@ -162,7 +162,7 @@
 3. Simulation versus theoretical hypothesis testing frameworks, z-tests and t-tests, parametric versus nonparametric hypothesis testing frameworks, other tests such as Chi-squared or F-tests, etc...
 
 
-# 05 Simple Linear Regression
+# 06 Simple Linear Regression
 
 **LEC 1 New Topics**
 
