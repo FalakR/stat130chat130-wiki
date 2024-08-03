@@ -146,20 +146,41 @@
 2. the sampling distribution under the null 
     1. one sample "difference" hypothesis tests with a "no effect" null
 3. [p-values](https://github.com/pointOfive/STA130_ChatGPT/wiki/05-Hypothesis-Testing#p-values)
-4. [one- or two-sided hypothesis tests](https://github.com/pointOfive/STA130_ChatGPT/wiki/05-Hypothesis-Testing#One--or-Two-Sided Hypothesis-Tests)
+4. [one- or two-sided hypothesis tests](https://github.com/pointOfive/STA130_ChatGPT/wiki/05-Hypothesis-Testing#One-or-Two-Sided Hypothesis-Tests)
     
-**LEC Extensions**
+**LEC Extensions / New Topics**
 
-2. 
+2. independent "random" samples
     1. one sample hypothesized parameter value tests
 3. using p-values
-
-**LEC New Topics**
-
-1. Type I and Type II errors
+    1. Type I and Type II errors
 
 **Out of Scope**
 
 1. Material covered in future weeks
 2. Anything not substantively addressed above...
 3. Simulation versus theoretical hypothesis testing frameworks, z-tests and t-tests, parametric versus nonparametric hypothesis testing frameworks, other tests such as Chi-squared or F-tests, etc...
+
+
+# 05 Simple Linear Regression
+
+**LEC New Topics**
+
+1. correlation association (is not causation)
+2. y = ax + b
+3. predictor, outcome, intercept and slope coefficients, and error terms
+4. simple linear regression is a normal distribution
+
+**TUT/HW Topics**
+
+1. `import statsmodels.formula.api as smf`
+2. "R-style" `y~x` formulas and `smf.ols(y~x, data=df)`
+3. using `smf.ols(y~x, data=df).fit().summary()`
+    1. `.tables[1]`, `.params`, `.fittedvalues`, `.rsquared`
+    2. $\hat \beta$ versus $\beta$
+    3. linear association "on average"
+
+**LEC Extensions**
+
+1.
+2. 
