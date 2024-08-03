@@ -164,7 +164,7 @@
 
 # 05 Simple Linear Regression
 
-**LEC New Topics**
+**LEC 1 New Topics**
 
 1. correlation association (is not causation)
 2. y = ax + b
@@ -177,10 +177,14 @@
 2. "R-style" `y~x` formulas and `smf.ols(y~x, data=df)`
 3. using `smf.ols(y~x, data=df).fit().summary()`
     1. `.tables[1]`, `.params`, `.fittedvalues`, `.rsquared`
-    2. $\hat \beta$ versus $\beta$
+    2. $\hat \beta_k$ versus $\beta_k$
     3. linear association "on average"
 
-**LEC Extensions**
+**LEC 2 New Topics / Extensions**
 
-1.
-2. 
+1. indicator variables
+2. two sample group comparisons
+3. normality assumption diagnostic
+4. one, paired, and two sample tests
+4. two sample permutation tests
+5. two sample bootstrapping
