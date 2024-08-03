@@ -174,11 +174,11 @@
 **TUT/HW Topics**
 
 1. `import statsmodels.formula.api as smf`
-2. "R-style" `y~x` formulas and `smf.ols(y~x, data=df)`
+2. "R-style" formulas and `smf.ols(y~x, data=df)`
 3. using `smf.ols(y~x, data=df).fit().summary()`
     1. `.tables[1]`, `.params`, `.fittedvalues`, `.rsquared`
     2. $\hat \beta_k$ versus $\beta_k$
-    3. linear association "on average"
+    3. hypothesis testing no linear association "on average"
 
 **LEC 2 New Topics / Extensions**
 
