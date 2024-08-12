@@ -24,7 +24,7 @@
     1. ~function side-effects~
 3. [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion)
 5. 
-    1. `.dtypes` and `.astype()`  
+    1. [`.dtypes` and `.astype()`](01-Data-Summarization#pandas-column-data-types)
     2. dictionary `dict()` objects
     3. statistic calculation functions
 
