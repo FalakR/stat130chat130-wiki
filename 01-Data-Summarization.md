@@ -19,8 +19,8 @@
 
 **LEC New Topics**
 
-1. sorting and (0-based) indexing
-2. subsetting and boolean selection
+1. [sorting and (0-based) indexing](01-Data-Summarization#sorting-and-indexing)
+2. [subsetting via conditionals and boolean selection](01-Data-Summarization#logical-conditionals-and-boolean-selection-subsetting-and indexing-v2)
 
 **Out of Scope**
 
@@ -344,7 +344,7 @@ print(missing_values_sum)
 
 In the output, `bool_df` shows that in data in the DataFrame is boolean after applying `.isna()`. The `missing_values_sum` shows the sum of missing values per column, where `True` values have been coerced to `1` and summed up.
 
-> For more details regarding "counting missing values", see [Missingness I](01-Data-Summarization#Missingness-I) and [Missingness II](01-Data-Summarization#Missingness-II).
+> For more details regarding "counting missing values", see [Missingness I](01-Data-Summarization#Missingness-I) and [Missingness II](01-Data-Summarization#Missingness-II). For additional examples creating boolean values using logical conditionals, see [Logical Conditionals and Boolean Selection/Subsetting](01-Data-Summarization#logical-conditionals-and-boolean-selection-subsetting) below.
 
 
 ## `Pandas` column data `types`
@@ -468,3 +468,82 @@ its usual values and the general spread of values around this usual value, as wi
   $$\max_{i} x_i = \max(x_1, x_2, \ldots, x_n)$$
 
 These are **statistics** for **numeric** data; whereas, the `df['x'].value_counts()` **method** returns the count of each unique value in the data and so is contrastingly appropriate when column `x` contains non-numeric (**categorical**) data.  Using `df['x'].value_counts(dropna=False)` will additionally includes the number of missing values in the column in the returned counts; whereas, to determine this for **numeric** variables in the context of `df.describe()` would require a relative comparison to `df.shape` or `df['x'].size`.
+
+## Sorting and Indexing V1
+
+> **LEC New Topics**
+> 
+> 1. [sorting and (0-based) indexing](01-Data-Summarization#sorting-and-indexing)
+
+We can look into `pandas DataFrame object` datasets, such as the one introduced in LEC
+
+```python
+import pandas as pd
+url = "https://raw.githubusercontent.com/KeithGalli/pandas/master/pokemon_data.csv"
+df = pd.read_csv(url)  # Load the data
+df.head()  # Display the first few rows
+```
+
+by **sorting** by the values within a column using `df.sort_values(by=['col1','col2])`
+
+```python
+df_Name_sorted = df.sort_values(by='Name')  # or 
+df_Type12_sorted = df.sort_values(by=['Type 1','Type 2']) 
+df_Type12_sorted
+```
+
+and then **selecting** specific rows (and/or columns) in the data by indexing into the `.iloc` ("index location") **attribute**
+
+```python
+start_row = 50
+end_row_plus_1 = start_row + 10  # this example will select 10 rows
+# This takes the row from index `start_row` up to (but not including) `end_row_plus_1`
+df_Name_sorted.iloc[start_row:end_row_plus_1, :]  # and ":" in the second position means "all columns"
+# df_Name_sorted.iloc[:, 1:3]  # "all rows" but columns 2 and 3... wait, what?  
+```
+
+Python is `0`-indexed, which means the first row is in index position `0` (for the rows), and similarly the first column is in index position `0` (for the columns). So `1:3` means take the 2nd and 3rd index position (of either the rows or columns, depending on which position it is 
+in the square brackets `[rows, cols]`, so `[:, 1:3]` above references the columns).
+
+Now look again at the output of `df_Name_sorted.iloc[start_row:end_row_plus_1, :]`
+- There is a "column" without a name on the far left of the printout (which doesn't quite match the column named `#`) that can be accessed through the `.index` **attribute<br>
+ `df_Name_sorted.iloc[start_row:end_row_plus_1, :].index`
+
+- But notice that the code in question doesn't correspond to the numbers in the `.index` **attribute...<br>
+  This is because the `.iloc` **attribute** is based on the actual (`0`-indexed) row numbers of the `pandas DataFrame object` as it currently exists, not the numbers in the `.index`. Here, the sorting of `df_Name_sorted` has resulted in the "shuffling" of the `.index` **attribute**  relative to its original order (which can be seen by looking at the initial `df` object).
+
+It's important to keep remember that the `.iloc` and `.index` **attributes** don't refer to the same thing, especially since they often initially appear to (and seem to be named in way that suggests they "should and would").
+
+```python
+# At first `df.index` is 0, 1, 2, 3, 4, ... so
+df.iloc[0:5, :].index  # is also still (0, 1, 2, 3, 4)
+# But now `df.dropna().index` is 0, 1, 2, 3, 6(!), ... so now 
+df.dropna().iloc[0:5, :].index  # is actually (0, 1, 2, 3, 6) instead of "indexes" (0, 1, 2, 3, 4) corresponding to "0:5"
+```
+
+## Logical Conditionals and Boolean Selection/Subsetting (and Indexing V2)
+
+> **LEC New Topics**
+> 
+> 2. [subsetting via conditionals and boolean selection](01-Data-Summarization#logical-conditionals-and-boolean-selection-subsetting-and indexing-v2)
+
+Sorting alphabetically (or even numerically) and then subsetting by actually row index numbers is going to end up feeling pretty tedious. Fortunately, we can use **logical conditionals** to **subset** to only the parts of a dataset we are interested in by using so-called **boolean selection**.
+
+```python
+df_100plusHP = df[ df.HP >= 100 ]  # creates boolean with logical check; or, 
+df_Legendary = df[df.Legendary]  # already a boolean so no logical check needed; or
+# Opposite of a boolean uses `~`; so, `df_NotLegendary = df[~df.Legendary]`
+df_Fire = df[ df['Type 1'] == 'Fire' ]
+# Opposite of `==` uses "!-"; so, df_NotFire = df[  df['Type 1'] == 'Fire' ] 
+df_Fire
+```
+
+If you want to subset to just some specific columns as well, you'll need to use the `.loc` **attribute** (as opposed to the `.iloc` **attribute**).
+
+```python
+df.loc[df['Type 1'] == 'Fire', ["Name", "Attack", "Defense"]]
+# df.iloc[df['Type 1'] == 'Fire', ["Name", "Attack", "Defense"]] won't work(!)
+# because `i` in `iloc` really needs index numbers, not "names" or "boolean selections"
+```
+
+
