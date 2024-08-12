@@ -11,11 +11,11 @@
 **LEC Extensions**
 
 2. [function/method arguments](01-Data-Summarization#functionmethod-arguments) (like `encoding` and `inplace`)
-    1. ~function side-effects~
 3. [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion)
-5. 
-    1. [`.dtypes` and `.astype()`](01-Data-Summarization#pandas-column-data-types)
-    2. statistic calculation functions
+
+
+...5. i. [`.dtypes` and `.astype()`](01-Data-Summarization#pandas-column-data-types)<br>
+......ii. [statistic calculation functions](01-Data-Summarization#some-statistics-calculations)
 
 **LEC New Topics**
 
@@ -178,7 +178,7 @@ The `.describe()` **method** provides descriptive statistics that summarize **nu
 
 > The statistic calculations are based on the non-missing values in the data set, and the number of such non-missing values used to calculate the statistics is given by the "count" value returned from `.describe()`.
 
-The `[column_name].value_counts()` **method** counts the number of each unique value in a column (named `column_name`). This **method** is used for **categorical data** to understand the distribution of categories within a feature. It does not count missing values by default, but it can include them in the counts by using `dropna=False`.
+The `df[column_name].value_counts()` **method** counts the number of each unique value in a column (named `column_name`). This **method** is used for **categorical data** to understand the distribution of categories within a feature. It does not count missing values by default, but it can include them in the counts by instead using `df[column_name].value_counts(dropna=False)`.
 
 Here’s a demonstration using the Titanic dataset.
 
@@ -193,6 +193,7 @@ numerical_stats = titanic_df.describe()
 
 # Use df.value_counts() on a categorical column, for example, 'Embarked'
 embarked_counts = titanic_df['embarked'].value_counts()
+# embarked_counts_withNaN = titanic_df['embarked'].value_counts(dropna=False)
 
 print(numerical_stats)
 print(embarked_counts)
@@ -382,9 +383,83 @@ df['income'] = df['income'].astype('float64') # `income` has been converted from
 df.dtypes
 ```
 
-Something that you might like to do here is use `inplace`, e.g., `df['has_pet'].astype('category', inplace=True)`, but **this will not work**(!) because the `.astype()` does not have an `inplace` parameter because it returns a new `pandas DataFrame` or `Series object` with the converted data type. So, the typical usage is to reassign the result back to the original column, as shown in the examples above.
+Tying these "data" types back to the `.describe()` and `...value_counts()` **methods** addressed in the [Types I](01-Data-Summarization#Types-I) section above
 
+- `df['income'].astype('float64').describe()` is appropriate since this is a numeric data type
+- `df['has_pet'].astype('category')` is appropriate since this is a non-numeric (**categorical**) data type
+
+> Something that you might like to do here is use `inplace`, e.g., `df['has_pet'].astype('category', inplace=True)`, but **this will not work**(!) because the `.astype()` does not have an `inplace` parameter because it returns a new `pandas DataFrame` or `Series object` with the converted data type. So, the typical usage is to reassign the result back to the original column, as shown in the examples above.
+>
 > For methods that do support `inplace`, such as `drop()`, `fillna()`, or `replace()`, the `inplace=True` parameter modifies the original DataFrame without creating a new one. Since `.astype()` doesn't support `inplace`, you need to explicitly assign the result to the column you want to change.
 
   
+## Some Statistics Calculations
 
+> **LEC Extensions**
+> 
+> 5. 
+>     2. [statistic calculation functions](01-Data-Summarization#some-statistics-calculations)
+
+The `.describe()` method in `pandas` provides a quick statistical summary of numerical columns in a `pandas DataFrame object`. It computes several key statistics, which are especially useful for understanding the nature of the distribution of the data (such as 
+its usual values and the general spread of values around this usual value, as will be discussed later in Week 03). Here's an explanation of the statistical functions computed by `.describe()` and their corresponding programatic or mathematical notations as applicable.
+
+- **Count**: `df['col'].notna().sum()`
+
+  The number of non-missing entries in each column, generally referenced mathematically as $n$
+
+
+
+- **Sample Mean**: `df['x'].mean()` 
+
+  The average value of the entries, generally notated and computed (where $i$ "indexes" the observations) as 
+
+  $$\bar x = \frac{1}{n} \sum_{i=1}^{n} x_i$$
+
+
+
+- **Sample Standard Deviation**: `df['x'].std()` 
+
+  A measure of the spread (or dispersion) of the values which is "the ([geometric mean](https://en.wikipedia.org/wiki/Geometric_mean)) average distance of points away from the sample mean $\bar x$" defined by the formula (where $i$ "indexes" the observations)
+
+  $$s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2}$$
+
+  > where $n-1$ is used rather than $n$ for "technical purposes" related to so-called "estimator bias" which is a topic to be addressed in a more advanced statistics course and is beyond the scope of STA130.
+  >
+  > The **sample variance** is the **squared standard deviation**
+  > 
+  > $$s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2$$
+
+
+
+- **Minimum**: `df['x'].min()`
+
+  The smallest value in the column, notated mathematically (where $i$ "indexes" the observations) as 
+
+  $$\min_{i} x_i = \min(x_1, x_2, \ldots, x_n)$$
+
+
+
+- **25th Percentile (25%)**: `df['x'].quantile(0.25)`
+
+  The value below which 25% of the data falls, often notated mathematically as $Q_1$
+
+
+
+- **Median / 50th Percentile (50%)**: `df['x'].quantile(0.5)`
+
+  The middle value in the data set, dividing the data into two equal halves such that 50% of the data falls below this value, usually referred to as the **median** (rather than $Q_2$)
+
+
+- **75th Percentile (75%)**: `df['x'].quantile(0.75)`
+
+  The value below which 25% of the data falls, often notated mathematically as $Q_3$
+
+
+
+- **Minimum**: `df['x'].min()`
+
+  The largest value in the column, notated mathematically (where $i$ "indexes" the observations) as 
+
+  $$\max_{i} x_i = \max(x_1, x_2, \ldots, x_n)$$
+
+These are **statistics** for **numeric** data; whereas, the `df['x'].value_counts()` **method** returns the count of each unique value in the data and so is contrastingly appropriate when column `x` contains non-numeric (**categorical**) data.  Using `df['x'].value_counts(dropna=False)` will additionally includes the number of missing values in the column in the returned counts; whereas, to determine this for **numeric** variables in the context of `df.describe()` would require comparison to `df.shape` or `df['x'].size`.
