@@ -395,129 +395,42 @@ Something that you might like to do here is use `inplace`, e.g., `df['has_pet'].
 > 5. 
 >     2. [dictionary `dict()` objects](01-Data-Summarization#what-are-pandas-dataframe-objects)
   
-You've already encountered `python dict` (dictionary) `object types` in the [Missingness I](01-Data-Summarization#Missingness-I), [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion), and [`Pandas` column data `types`](01-Data-Summarization#pandas-column-data-types) sections where they were used to defined `pandas DataFrame objects`; and, dictionaries were again used in the [Variables and Observations](01-Data-Summarization#Variables-and-Observations) to rename the columns of `pandas DataFrame objects`. 
-
-
-Certainly! Let's dive into how dictionaries (`dict` objects) are used in Python, particularly in the context of creating and manipulating pandas DataFrames.
-
-### What is a Dictionary in Python?
-
-A dictionary in Python is a collection of key-value pairs. Each key is unique, and it maps to a value, which can be any data type (e.g., integer, string, list, another dictionary, etc.).
-
-**Basic Example of a Dictionary:**
+Week 02 formally introduced `list`, `dict`, `np.array` and `str` "object" `types` (as opposed to "data" `types`); but, you actually encountered str`, `list`, and `dict` (**dictionary**) `python object types` in Week 01 (perhaps without particularly noticing) in the [Missingness I](01-Data-Summarization#Missingness-I), [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion), and [`Pandas` column data `types`](01-Data-Summarization#pandas-column-data-types) sections where they were used to defined `pandas DataFrame objects`.
 
 ```python
-person = {
-    'name': 'Alice',
-    'age': 25,
-    'city': 'New York'
-}
-```
-
-- `'name'`, `'age'`, and `'city'` are the keys.
-- `'Alice'`, `25`, and `'New York'` are the corresponding values.
-
-### Using a Dictionary to Create a DataFrame
-
-When working with pandas, you can use a dictionary to create a DataFrame. In this context, the keys of the dictionary represent the column names, and the values represent the data for those columns.
-
-**Example Using the Data from Before:**
-
-Let's create a DataFrame using a dictionary where:
-- The keys are `'age'`, `'name'`, `'income'`, and `'has_pet'`.
-- The values are lists containing the data for each column.
-
-```python
-import pandas as pd
-
-# Dictionary representing the data
+# Python `dict` types can be defined with curly brackets "{" and "}"
 data = {
-    'age': [25, 32, 47, 51],
-    'name': ['Alice', 'Bob', 'Charlie', 'David'],
+    'age': [25, 32, 47, 51], # 'age' is an `str` "string" type; `[25, 32, 47, 51]` is a `list`
+    'name': ['Alice', 'Bob', 'Charlie', 'David'], 
     'income': [50000, 60000, 70000, 80000],
     'has_pet': ['yes', 'no', 'no', 'yes']
 }
-
-# Create a DataFrame from the dictionary
 df = pd.DataFrame(data)
-
-# Display the DataFrame
-print(df)
 ```
 
-**Output:**
+So a `pandas DataFrame object` is fundamentally a **dictionary**, with column names corresponding to the "keys" of the **dictionary** and the values in the rows of the column corresponding to the "values" in the **dictionary** which are **lists** of data (all having the same length).
 
-```
-   age     name  income has_pet
-0   25    Alice   50000     yes
-1   32      Bob   60000      no
-2   47  Charlie   70000      no
-3   51    David   80000     yes
-```
+> Technically, `pandas` first transforms each `list` (or `tuple`) into an `np.array` and then further transforms this into a `pd.Series`, finally making the `pandas DataFrame object` a collection of columns of  `pd.Series` objects which are accessed in the manner of a dictionary.
 
-- Here, `data` is a dictionary where each key represents a column name, and each value is a list containing the data for that column.
-- `pd.DataFrame(data)` converts the dictionary into a DataFrame.
-
-### Why Use Dictionaries to Create DataFrames?
-
-Using dictionaries to create DataFrames is common because it provides a clear and flexible way to organize data. Some benefits include:
-
-1. **Clarity**: It's easy to see which column corresponds to which data.
-2. **Flexibility**: You can easily adjust the data by modifying the dictionary (e.g., adding new columns or rows).
-3. **Readability**: The code is easy to read and understand, making it clear how the DataFrame is structured.
-
-### Adding New Columns Using a Dictionary
-
-You can also add new columns to an existing DataFrame by using a dictionary:
-
-**Example: Adding a New Column**
+The fundamental **dictionary** nature of a `pandas DataFrame object` is reflected in the way columns are referenced when working in `pandas`, as seen in the [Types I](01-Data-Summarization#Types-I) and [Missingness II](01-Data-Summarization#Missingness-II) sections in Week 01:
 
 ```python
-# New column data
-new_data = {
-    'city': ['New York', 'Los Angeles', 'Chicago', 'Houston']
-}
+del df['name']  # removes the 'name' column from the df object
+df['age']  # returns the 'age' column
+# both of which function analogously to how `dict` objects are managed
 
-# Add the new column to the DataFrame
-df['city'] = new_data['city']
+# and, unsurprisingly, data is added to a `pd.DataFrame` objects 
+# in just the same analogous manner as with `dict` objects
 
-# Display the updated DataFrame
-print(df)
+df['city'] = ['New York', 'Los Angeles', 'Chicago', 'Houston']
+# just like how the data would be added to the original dictionary
+data['city'] = ['New York', 'Los Angeles', 'Chicago', 'Houston']
 ```
 
-**Output:**
-
-```
-   age     name  income has_pet         city
-0   25    Alice   50000     yes     New York
-1   32      Bob   60000      no  Los Angeles
-2   47  Charlie   70000      no      Chicago
-3   51    David   80000     yes      Houston
-```
-
-### Summary
-
-- A dictionary in Python is a collection of key-value pairs.
-- In the context of pandas, dictionaries are commonly used to create DataFrames, where the keys are column names and the values are lists of data for those columns.
-- This approach is flexible, easy to understand, and allows for straightforward data manipulation.
-
-If you need further clarification or more examples, feel free to ask!
-
-The explanation given there is worth repeating
-
-```python
-# The `{'a': 'A', 'b': 'B'}` is a "dictionary" `dict()` data type object.
-# In dictionary parlance, the lowercase letters in the above example are "keys" 
-# and the uppercase letters are the "values" which correspond the to the "keys"
-
-# In this case, the code specifies the columns to be renamed (the keys)
-# and what their new names should be (the values).
-```
-
-and 
-
-
-> 6. removing missing data... with [`df.dropna()`](01-Data-Summarization#Missingness-II) and [`del df['col']`](01-Data-Summarization#Missingness-II)
-
-> 3. 
+# which is a more common usage alternative to 
+data = dict('age': [25, 32, 47, 51],
+            'name': ['Alice', 'Bob', 'Charlie', 'David'],
+            'income': [50000, 60000, 70000, 80000],
+            'has_pet': ['yes', 'no', 'no', 'yes'])
+[Variables and Observations](01-Data-Summarization#Variables-and-Observations) of to rename the columns of `pandas DataFrame objects`. 
 
