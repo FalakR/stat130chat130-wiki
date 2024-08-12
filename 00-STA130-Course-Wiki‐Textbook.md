@@ -41,10 +41,6 @@
 4. ...further "data wrangling topics" such as "joining" and "merging"; "pivoting", "wide to long", and "tidy" data formats; etc.
 
 
-
-
-
-
 # 02 Coding
 
 **TUT/HW Topics**
@@ -58,7 +54,7 @@
 **LEC Extensions / New Topics**
 
 1. 
-    1. `type()` not "types of data" like quantitative or qualitative
+    1. "object" `type()` [as opposed to "data type" (like numerical or categorical)]
     2. `str` (and `sentence.split()`) as opposed to `int` versus `float` versus `bool`
     3. operator overloading polymorphism with `+` and `.sum()`
 2. `from scipy import stats`, `stats.multinomial`, and probability [and `np.random.choice`]
