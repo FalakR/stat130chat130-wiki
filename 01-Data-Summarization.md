@@ -280,15 +280,20 @@ There are likely many `pandas` **arguments** that you will find useful and helpf
 - `skiprows` and `names` to control column names 
 - and see more [here](https://note.nkmk.me/en/python-pandas-read-csv-tsv/)<br>(because ``pd.read_csv?` will probably be more confusing that helpful the first few times you look at it...)
 
-Moving beyond `pd.read_csv`, another `pandas` **argument** that is worth considering is the `inplace` **argument**, which works as follows (and we'll demonstrate using this again further below).
+Moving beyond `pd.read_csv`, another `pandas` **argument** that is worth considering is the `inplace` **argument**, which works as follows (and will be [referenced again below](01-Data-Summarization#pandas-column-data-types) to further contrast and clarify the nature of `inplace`).
 
 ```python
 df = pd.read_csv(tricky_file, encoding="ISO-8859-1")
 # df = df.dropna() # instead of this, just use
-df.dropna(inplace=True)
+df.dropna(inplace=True) # where the so-called "side-effect" of this *method* 
+# is to transform the `df` object into an updated form without missing values
+
+# We typically think of functions are "returning values or object" 
+# as in the case of `df = df.dropna()`; but, `df.dropna(inplace=True)`
+# demonstrates that functions can operate in terms of "side-effects" on objects as well...
 ```
 
-> Technically, `pd.read_csv` is called a **function** while `df.dropna(...)` is called a **method**. The reason for the difference is that the `.dropna(...)` **method** is a "function" that belongs to the `df` `pandas DataFrame object`. You can think of `.dropna(...)` as a "function" who's first (default) **argument** is the `df` `pandas DataFrame object`.
+> Technically, `pd.read_csv` is called a **function** while `df.dropna(...)` is called a **method**. The reason for the difference is that the `.dropna(...)` **method** is a "function" that belongs to the `df` `pandas DataFrame object`. You can think of a **method** like `.dropna(...)` as a "function" who's first (default) **argument** is the `df` `pandas DataFrame object`.
 >
 > - We have already used the term **method** above (without explicitly defining it) in sections<br>
 >   [4. Variables and Observations](01-Data-Summarization#Variables-and-Observations)<br>
@@ -340,3 +345,45 @@ In the output, `bool_df` shows that in data in the DataFrame is boolean after ap
 > 
 > 5. 
 >    1. [`.dtypes` and `.astype()`](01-Data-Summarization#pandas-column-data-types)
+
+As demonstrated below
+
+- the `.dtypes` **attribute** defines the `type` of data that is stored in a `pandas DataFrameObject` column
+- while `.astype()` **method** is used to convert data types to specific formats more specifically suite the nature of the data column
+
+The `.dtypes` **attribute** of a `pandas DataFrame object` provides the data type of each column. This is useful for identifying whether columns are numerical (e.g., `int64`, `float64`) or categorical (e.g., `object`, `category`).
+
+```python
+import pandas as pd
+
+# Sample DataFrame
+data = {
+    'age': [25, 32, 47, 51],
+    'name': ['Alice', 'Bob', 'Charlie', 'David'],
+    'income': [50000, 60000, 70000, 80000],
+    'has_pet': ['yes', 'no', 'no', 'yes']
+}
+# Here, `age` and `income` are numerical (integers), while `name` and `has_pet` are given the `type` of `object` 
+#   (which in the case of `has_pet` could be interpreted as **categorical** data; whereas
+#    `name` is probably better interpreted as an identifier rather than a "cateogory")
+
+df = pd.DataFrame(data)
+df.dtypes
+```
+
+The `.astype()` **method** is used to convert the data type of a column to another type. For instance, you might want to convert a column from `object` to `category` (a more memory-efficient way to store **categorical data**) or convert a **numerical** column to `float64` if you need to include decimal points.
+
+```python
+# Convert the type of 'has_pet' to "categorical" and the type of 'income' to "float"
+df['has_pet'] = df['has_pet'].astype('category') # `has_pet` is now of type `category`
+df['income'] = df['income'].astype('float64') # `income` has been converted from `int64` to `float64`, allowing for decimal points.
+df.dtypes
+```
+
+Something that you might like to do here is use `inplace`, e.g., `df['has_pet'].astype('category', inplace=True)`, but **this will not work**(!) because the `.astype()` does not have an `inplace` parameter because it returns a new `pandas DataFrame` or `Series object` with the converted data type. So, the typical usage is to reassign the result back to the original column, as shown in the examples above.
+
+> For methods that do support `inplace`, such as `drop()`, `fillna()`, or `replace()`, the `inplace=True` parameter modifies the original DataFrame without creating a new one. Since `.astype()` doesn't support `inplace`, you need to explicitly assign the result to the column you want to change.
+
+
+  
+
