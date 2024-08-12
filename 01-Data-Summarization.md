@@ -19,7 +19,7 @@
 
 **LEC New Topics**
 
-1. [sorting and (0-based) indexing](01-Data-Summarization#sorting-and-indexing)
+1. [sorting and (0-based) indexing](01-Data-Summarization#sorting-and-iloc-indexing)
 2. [subsetting via conditionals and boolean selection](01-Data-Summarization#logical-conditionals-and-boolean-selection-subsetting-and indexing-v2)
 
 **Out of Scope**
