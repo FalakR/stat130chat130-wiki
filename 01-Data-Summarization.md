@@ -15,7 +15,7 @@
 3. [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion)
 5. 
     1. [`.dtypes` and `.astype()`](01-Data-Summarization#pandas-column-data-types)
-    2. [dictionary `dict()` objects](01-Data-Summarization#dictionaries)
+    2. ~[What are `pandas DataFrame objects`?](01-Data-Summarization#What0are-pandas-DataFrame-objects?)~
     3. statistic calculation functions
 
 **LEC New Topics**
