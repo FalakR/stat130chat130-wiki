@@ -10,7 +10,7 @@
 
 **LEC Extensions**
 
-2. [function/method arguments](01-Data-Summarization#functionmethod-arguments) (like `encoding` and `inplace`)
+2. [function/method arguments](01-Data-Summarization#functionmethod-arguments) (like `encoding` and `inplace` and `dropna`)
 3. [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion)
 
 
@@ -283,7 +283,12 @@ There are likely many `pandas` **arguments** that you will find useful and helpf
 - `skiprows` and `names` to control column names 
 - and see more [here](https://note.nkmk.me/en/python-pandas-read-csv-tsv/)<br>(because ``pd.read_csv?` will probably be more confusing that helpful the first few times you look at it...)
 
-Moving beyond `pd.read_csv`, another `pandas` **argument** that is worth considering is the `inplace` **argument**, which works as follows (and will be [referenced again below](01-Data-Summarization#pandas-column-data-types) to further contrast and clarify the nature of `inplace`).
+Moving beyond `pd.read_csv`, we've already seen many useful **arguments** 
+
+- `df[column_name].value_counts(dropna=False)` included a count of the number of missing observations along with the counts of the unique values in `column_name`
+- `df.rename(columns={'a': 'A', 'b': 'B'}, inplace=True)` allowed us to rename the columns of an existing data frame 
+    - where `inplace=True` updated `df` without requiring the reassingment `df = df.rename(columns={'a': 'A', 'b': 'B'})`, and this behavior is also present in `df.dropna(inplace=True)`
+-  and `df.isna().any(axis=1).sum()`, `df.dropna(how='all', inplace=True)`, and `df.dropna(thresh=2, inplace=True)` all provided useful control over how data missing data was removed from a `pandas DataFrame object`
 
 ```python
 df = pd.read_csv(tricky_file, encoding="ISO-8859-1")
@@ -291,12 +296,12 @@ df = pd.read_csv(tricky_file, encoding="ISO-8859-1")
 df.dropna(inplace=True) # where the so-called "side-effect" of this *method* 
 # is to transform the `df` object into an updated form without missing values
 
-# We typically think of functions are "returning values or object" 
+# We typically think of "functions" as "returning values or object" 
 # as in the case of `df = df.dropna()`; but, `df.dropna(inplace=True)`
 # demonstrates that functions can operate in terms of "side-effects" on objects as well...
 ```
 
-> Technically, `pd.read_csv` is called a **function** while `df.dropna(...)` is called a **method**. The reason for the difference is that the `.dropna(...)` **method** is a "function" that belongs to the `df` `pandas DataFrame object`. You can think of a **method** like `.dropna(...)` as a "function" who's first (default) **argument** is the `df` `pandas DataFrame object`.
+> Technically, `pd.read_csv` is a **function** while `df.value_counts(...)`, `df.rename(...), `df.dropna(...)`, `df.isna()...`, etc., are all **methods**. The reason for the difference is that a **method** is a "function" that belongs to the `df` `pandas DataFrame object`. You can think of a **method** like `.dropna(...)` as a "function" who's first (default) **argument** is the `df` `pandas DataFrame object`.
 >
 > - We have already used the term **method** above (without explicitly defining it) in sections<br>
 >   [4. Variables and Observations](01-Data-Summarization#Variables-and-Observations)<br>
