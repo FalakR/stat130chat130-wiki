@@ -2,7 +2,7 @@
 
 1. importing libraries... like [`pandas`](01-Data-Summarization#import)
 2. loading data... with [`pd.read_csv()`](01-Data-Summarization#read_csv)
-3. counting missing values... with [`df.isna.sum()`](01-Data-Summarization#Missingness-I)
+3. counting missing values... with [`df.isna().sum()`](01-Data-Summarization#Missingness-I)
 4. observations (rows) and variables (columns)... [`df.shape`](01-Data-Summarization#Variables-and-Observations) and [`df.columns`](01-Data-Summarization#Variables-and-Observations)
 5. numeric versus non-numeric... [`df.describe()`](01-Data-Summarization#Types-I) and [`df.value_counts()`](01-Data-Summarization#Types-I)
 6. removing missing data... with [`df.dropna()`](01-Data-Summarization#Missingness-II) and [`del df['col']`](01-Data-Summarization#Missingness-II)
@@ -27,13 +27,15 @@
 
 1. Material covered in future weeks
 2. Anything not substantively addressed above...
-3. ...such as how to handle missing values using more advanced methods than just "ignoring" or "removing" them
+3. ...such as how to handle missing values using more advanced techniques that don't just "ignore" or "remove" them
 4. ...further "data wrangling topics" such as "joining" and "merging"; "pivoting", "wide to long", and "tidy" data formats; etc.
 
 # TUT/HW Topics
 
 ## import
 
+> **TUT/HW Topics**
+> 
 > 1. importing libraries... like [`pandas`](01-Data-Summarization#import)
 
 ```python
@@ -44,6 +46,8 @@ from pandas import read_csv # funtion only import usage is `read_csv()`
 
 ## read_csv
 
+> **TUT/HW Topics**
+> 
 > 2. loading data... with [`pd.read_csv()`](01-Data-Summarization#read_csv)
 
 ```python
@@ -77,20 +81,18 @@ titanic_df = pd.read_csv(working_url)
 # links directly to an actual "raw" `.csv` file
 ```
 
-**Extensions**
-
-Here are some parameters of the `pd.read_csv` method that can be used to address somewhat common special cases...
-- `encoding` for different character sets
-- `sep` for different file types
-- `skiprows` and `names` to control column names (and see more [here](https://note.nkmk.me/en/python-pandas-read-csv-tsv/))
+See the [Function/Method Arguments](01-Data-Summarization#functionmethod-arguments) section below for further details!
  
 
 ## Missingness I
 
+> **TUT/HW Topics**
+> 
 > 3. counting missing values... with [`df.isna.sum()`](01-Data-Summarization#Missingness-I)
 
-In Python we generally use the pandas library to count missing values.
-Specifically, we use the `.isna()` (or equivalently `isnull()` since it is just an **alias** for `.isna()`) methods followed by the `.sum()` method. 
+In Python we generally use the `pandas` library to count missing values.
+Specifically, we use the `.isna()` (or equivalently `isnull()` since it is just an **alias** for `.isna()`) followed by `.sum()`.
+ 
 > Sometimes we may additionally use `axis=1` and `.any()`.
 
 Here’s a quick example of how this is done:
@@ -128,7 +130,9 @@ For more details regarding "boolean values and coercion", see [Boolean Values an
 
 ## Variables and Observations
 
-> 4. observations (rows) and variables (columns)... [`df.shape`](01-Data-Summarization#Variables-and-Observations) and [`df.columns`](01-Data-Summarization#Variables-and-Observations)
+> **TUT/HW Topics**
+> 
+> 4. observations (rows) and variables (columns)... [`df.shape`](01-Data-Summarization#variables-and-observations) and [`df.columns`](01-Data-Summarization#Variables-and-Observations)
 
 ```python
 import pandas as pd
@@ -163,17 +167,19 @@ We're likely to intuitively think of an "observation" as a single value, and we 
 
 Variables can be [numerical (quantitative) or categorical (qualitative)](https://uniskills.library.curtin.edu.au/numeracy/statistics/data-variable-types/). For instance, a [patient dataset](http://www.statistics4u.info/fundstat_eng/cc_variables.html) might include the variables of age, weight, blood type, etc.
 
-> Missing values in datasets need to be handled carefully during analysis because they can affect the results. Different statistical methods and tools have their own ways of dealing with missing values, either by ignoring, removing them, or filling them in with estimated values.
+> Missing values in datasets need to be handled carefully during analysis because they can affect the results. Different statistical analyses and tools have their own ways of dealing with missing values, either by ignoring, removing them, or filling them in with estimated values. These techniques are beyond the scope of STA130 so we will not introduce or consider them here.
 
 ## Types I
 
+> **TUT/HW Topics**
+> 
 > 5. numeric versus non-numeric... [`df.describe()`](01-Data-Summarization#Types-I) and [`df.value_counts()`](01-Data-Summarization#Types-I)
 
-The `.describe()` method provides descriptive statistics that summarize **numerical data** in terms of its location (or position) and scale (or spread). Its provides mean, standard deviation, median (50th percentile), quartiles (25th and 75th percentile), and minimum and maximum values.
+The `.describe()` **method** provides descriptive statistics that summarize **numerical data** in terms of its location (or position) and scale (or spread). Its provides mean, standard deviation, median (50th percentile), quartiles (25th and 75th percentile), and minimum and maximum values.
 
 > The statistic calculations are based on the non-missing values in the data set, and the number of such non-missing values used to calculate the statistics is given by the "count" value returned from `.describe()`.
 
-The `[column_name].value_counts()` method counts the number of each unique value in a column (named `column_name`). This method is used for **categorical data** to understand the distribution of categories within a feature. It does not count missing values by default, but it can include them in the counts by using `dropna=False`.
+The `[column_name].value_counts()` **method** counts the number of each unique value in a column (named `column_name`). This **method** is used for **categorical data** to understand the distribution of categories within a feature. It does not count missing values by default, but it can include them in the counts by using `dropna=False`.
 
 Here’s a demonstration using the Titanic dataset.
 
@@ -195,6 +201,8 @@ print(embarked_counts)
 
 ## Missingness II
 
+> **TUT/HW Topics**
+> 
 > 6. removing missing data... with [`df.dropna()`](01-Data-Summarization#Missingness-II) and [`del df['col']`](01-Data-Summarization#Missingness-II)
 
 ```python
@@ -220,23 +228,27 @@ The order in which you remove rows or columns with missing values to some degree
 
 ## Grouping and Aggregation
 
+> **TUT/HW Topics**
+> 
 > 7. grouping and aggregation.... with [`df.groupby("col1")["col2"].describe()`](01-Data-Summarization#Grouping-and-Aggregation)
 
 Grouping and aggregation are powerful concepts in data analysis, particularly with pandas in Python. They allow you to organize data into groups and then perform operations on those groups to extract insights.
 
-**Grouping** refers to the process of organizing data into groups based on some criteria. In pandas, this is done using the `.groupby()` method. When you group data, you’re essentially splitting the DataFrame into smaller chunks based on unique values of a specified key column or columns. For example, `df.groupby("col1")` will create a group for each unique value in `"col1"`.
+**Grouping** refers to the process of organizing data into groups based on some criteria. In pandas, this is done using the `.groupby()` **method**. When you group data, you’re essentially splitting the DataFrame into smaller chunks based on unique values of a specified key column or columns. For example, `df.groupby("col1")` will create a group for each unique value in `"col1"`.
 
-**Aggregation** refers to computing summaries of each of the groups once they're separated. Some examples of aggregation functions are the `.sum()`, `.mean()`, `.min()`, `.max()`, and `.count()` methods. When you use `df.groupby("col1")["col2"].describe()` you're doing all of these at once (as well as `np.quantile([25,50,75])`).
+**Aggregation** refers to computing summaries of each of the groups once they're separated. Some examples of aggregation functions are the `.sum()`, `.mean()`, `.min()`, `.max()`, and `.count()` **methods**. When you use `df.groupby("col1")["col2"].describe()` you're doing all of these at once (as well as `np.quantile([25,50,75])`).
 
 > After `df.groupby("col1")` groups the data by unique values in `"col1"`, the subsequent `["col2"]` selects the `"col2"` column from the data, and then for each group the concluding `.describe()` computes the summary statistics for `"col2"` within each group. Namely, the count, mean, standard deviation, minimum, 25% (first quartile), 50% (median), 75% (third quartile), and maximum values for `"col2"` within each group. 
 
-Missing values in the grouping column (`"col1"`) will result in a separate group if there are any, while the `.describe()` method automatically excludes missing values when calculating descriptive statistics for `"col2"`.
+Missing values in the grouping column (`"col1"`) will result in a separate group if there are any, while the `.describe()` **method** automatically excludes missing values when calculating descriptive statistics for `"col2"`.
 
 
 # LEC Extensions
 
 ## Function/Method Arguments 
 
+> **LEC Extensions**
+>
 > 2. [function/method arguments](01-Data-Summarization#Function-Arguments) (like `encoding` and `inplace`)
 
 The `pandas.read_csv` `python` (`pandas`) **function** is used to read a CSV (Comma Separated Values) file as a `pandas DataFrame object` (that can be assigned into a `python` variable). Running the following in a `jupyter notebook cell` will show you that the `pandas.read_csv` **function** can be controlled with a huge number of **arguments**.
@@ -252,13 +264,22 @@ pd.read_csv? # add ? to the end of a function to see the so-called
 In `python`, **function arguments** are named and can be optional if they have default values. The `filepath_or_buffer` **argument** of the `pd.read_csv` **function** is required (and not optional so it does not have default value). The `encoding` **argument** is optional, and has a default value of `None`, which means that the function uses the system's default character encoding system when reading the file. A common character encoding system is [UTF-8](https://en.wikipedia.org/wiki/UTF-8#:~:text=UTF%2D8%20is%20the%20dominant,8%20encodings%20on%20the%20web), and you could force `pd.read_csv` to expect this encoding by including the **argument** `encoding="utf-8"` into the `pd.read_csv` **function** when it is called. Another (sometimes useful) alternative `encoding="ISO-8859-1"` is demonstrated below.
 
 ```python
-tricky_file = "https://raw.githubusercontent.com/pointOfive/STA130_F23/main/Data/amazonbooks.csv"
-pd.read_csv(tricky_file, encoding='UTF-8') # fails
-#pd.read_csv(tricky_file) # fails, defaults to UTF-8
-#pd.read_csv(tricky_file, encoding="ISO-8859-1")# works!
+trickily_encoded_file = "https://raw.githubusercontent.com/pointOfive/STA130_F23/main/Data/amazonbooks.csv"
+# remember, "https://github.com/pointOfive/STA130_F23/blob/main/Data/amazonbooks.csv" won't work 
+# because that's not actually a link to a real CSV file [as you can see if you go to that github page]...
+
+pd.read_csv(trickily_encoded_file, encoding='UTF-8') # fails
+#pd.read_csv(trickily_encoded_file) # fails, because it defaults to UTF-8
+#pd.read_csv(trickily_encoded_file, encoding="ISO-8859-1")# works!
 ```
 
-There are likely many `pandas` **arguments** that you will find useful and helpful, but for now we'll just mention and demonstrate `inplace` (and we'll demonstrate using this again in a little more detail further below).
+There are likely many `pandas` **arguments** that you will find useful and helpful. For `pd.read_csv` some **arguments** address some relatively common special cases are 
+
+- `sep` for different file types
+- `skiprows` and `names` to control column names 
+- and see more [here](https://note.nkmk.me/en/python-pandas-read-csv-tsv/)<br>(because ``pd.read_csv?` will probably be more confusing that helpful the first few times you look at it...)
+
+Moving beyond `pd.read_csv`, another `pandas` **argument** that is worth considering is the `inplace` **argument**, which works as follows (and we'll demonstrate using this again further below).
 
 ```python
 df = pd.read_csv(tricky_file, encoding="ISO-8859-1")
@@ -266,8 +287,19 @@ df = pd.read_csv(tricky_file, encoding="ISO-8859-1")
 df.dropna(inplace=True)
 ```
 
+> Technically, `pd.read_csv` is called a **function** while `df.dropna(...)` is called a **method**. The reason for the difference is that the `.dropna(...)` **method** is a "function" that belongs to the `df` `pandas DataFrame object`. You can think of `.dropna(...)` as a "function" who's first (default) **argument** is the `df` `pandas DataFrame object`.
+>
+> - We have already used the term **method** above (without explicitly defining it) in sections<br>
+>   [4. Variables and Observations](01-Data-Summarization#Variables-and-Observations)<br>
+>   [5. Types I](01-Data-Summarization#Types-I)<br>
+>   [6. Missingness II](01-Data-Summarization#Missingness-II)<br>
+>   [7. Grouping and Aggregation](01-Data-Summarization#Grouping-and-Aggregation)
+
+
 ## Boolean Values and Coercion
 
+> **LEC Extensions**
+>
 > 3. [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion)
 
 In pandas, **boolean** values are represented as `True` or `False`. When you use the `.isna()` method on a DataFrame, it returns a DataFrame of boolean values, where each value is `True` if the corresponding element is missing and `False` otherwise.
