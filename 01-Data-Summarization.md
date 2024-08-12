@@ -14,7 +14,7 @@
     1. ~function side-effects~
 3. [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion)
 5. 
-    1. `.dtypes` and `.astype()`  
+    1. [`.dtypes` and `.astype()`](01-Data-Summarization#pandas-column-data-types)
     2. dictionary `dict()` objects
     3. statistic calculation functions
 
@@ -245,6 +245,7 @@ Missing values in the grouping column (`"col1"`) will result in a separate group
 
 # LEC Extensions
 
+
 ## Function/Method Arguments 
 
 > **LEC Extensions**
@@ -331,3 +332,11 @@ print(missing_values_sum)
 In the output, `bool_df` shows that in data in the DataFrame is boolean after applying `.isna()`. The `missing_values_sum` shows the sum of missing values per column, where `True` values have been coerced to `1` and summed up.
 
 > For more details regarding "counting missing values", see [Missingness I](01-Data-Summarization#Missingness-I) and [Missingness II](01-Data-Summarization#Missingness-II).
+
+
+## `Pandas` column data `types`
+
+> **LEC Extensions**
+> 
+> 5. 
+>    1. [`.dtypes` and `.astype()`](01-Data-Summarization#pandas-column-data-types)
