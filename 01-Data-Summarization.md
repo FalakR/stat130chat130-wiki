@@ -10,7 +10,7 @@
 
 **LEC Extensions**
 
-2. [function/method arguments](01-Data-Summarization#Function/Method-Arguments) (like `encoding` and `inplace`)
+2. [function/method arguments](01-Data-Summarization#functionmethod-arguments) (like `encoding` and `inplace`)
     1. ~function side-effects~
 3. [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion)
 5. 
