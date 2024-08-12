@@ -10,9 +10,9 @@
 
 **LEC Extensions**
 
-2. parameters and arguments
+2. [function/method arguments](01-Data-Summarization#Function/Method-Arguments) (like `encoding` and `inplace`)
+    1. ~function side-effects~
 3. [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion)
-4. ~function side-effects~
 5. 
     1. `.dtypes` and `.astype()`  
     2. dictionary `dict()` objects
@@ -232,7 +232,39 @@ Grouping and aggregation are powerful concepts in data analysis, particularly wi
 
 Missing values in the grouping column (`"col1"`) will result in a separate group if there are any, while the `.describe()` method automatically excludes missing values when calculating descriptive statistics for `"col2"`.
 
+
 # LEC Extensions
+
+## Function/Method Arguments 
+
+> 2. [function/method arguments](01-Data-Summarization#Function-Arguments) (like `encoding` and `inplace`)
+
+The `pandas.read_csv` `python` (`pandas`) **function** is used to read a CSV (Comma Separated Values) file as a `pandas DataFrame object` (that can be assigned into a `python` variable). Running the following in a `jupyter notebook cell` will show you that the `pandas.read_csv` **function** can be controlled with a huge number of **arguments**.
+
+```python
+import pandas as pd
+pd.read_csv? # add ? to the end of a function to see the so-called 
+# *signature* of the function... that is, all the possible *arguments* of a function
+```
+
+> In statistics, the term **parameter** refers to a characterization about a **population** (as will be discussed later in the course); but, in programming, the term **parameters** refers to the kinds of input that can be used to control the behavior of a **function**; whereas, the actual values given to the **parameters** of a **function** are called the **arguments** of the **function**. We will therefore use the term **arguments** to refer to the inputs of a **function**; but, technically, the **arguments** are the values assigned to the **parameters** of a **function** when it is called.
+
+In `python`, **function arguments** are named and can be optional if they have default values. The `filepath_or_buffer` **argument** of the `pd.read_csv` **function** is required (and not optional so it does not have default value). The `encoding` **argument** is optional, and has a default value of `None`, which means that the function uses the system's default character encoding system when reading the file. A common character encoding system is [UTF-8](https://en.wikipedia.org/wiki/UTF-8#:~:text=UTF%2D8%20is%20the%20dominant,8%20encodings%20on%20the%20web), and you could force `pd.read_csv` to expect this encoding by including the **argument** `encoding="utf-8"` into the `pd.read_csv` **function** when it is called. Another (sometimes useful) alternative `encoding="ISO-8859-1"` is demonstrated below.
+
+```python
+tricky_file = "https://raw.githubusercontent.com/pointOfive/STA130_F23/main/Data/amazonbooks.csv"
+pd.read_csv(tricky_file, encoding='UTF-8') # fails
+#pd.read_csv(tricky_file) # fails, defaults to UTF-8
+#pd.read_csv(tricky_file, encoding="ISO-8859-1")# works!
+```
+
+There are likely many `pandas` **arguments** that you will find useful and helpful, but for now we'll just mention and demonstrate `inplace` (and we'll demonstrate using this again in a little more detail further below).
+
+```python
+df = pd.read_csv(tricky_file, encoding="ISO-8859-1")
+# df = df.dropna() # instead of this, just use
+df.dropna(inplace=True)
+```
 
 ## Boolean Values and Coercion
 
