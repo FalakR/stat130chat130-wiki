@@ -15,7 +15,7 @@
 3. [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion)
 5. 
     1. [`.dtypes` and `.astype()`](01-Data-Summarization#pandas-column-data-types)
-    2. ~[What are `pandas DataFrame objects`?](01-Data-Summarization#What0are-pandas-DataFrame-objects?)~
+    2. ~[What are `pandas DataFrame objects`?](01-Data-Summarization#what-are-pandas-dataframe-objects)~
     3. statistic calculation functions
 
 **LEC New Topics**
@@ -393,7 +393,7 @@ Something that you might like to do here is use `inplace`, e.g., `df['has_pet'].
 > **LEC Extensions**
 >
 > 5. 
->     2. [dictionary `dict()` objects](01-Data-Summarization#dictionaries)
+>     2. [dictionary `dict()` objects](01-Data-Summarization#what-are-pandas-dataframe-objects)
   
 You've already encountered `python dict` (dictionary) `object types` in the [Missingness I](01-Data-Summarization#Missingness-I), [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion), and [`Pandas` column data `types`](01-Data-Summarization#pandas-column-data-types) sections where they were used to defined `pandas DataFrame objects`; and, dictionaries were again used in the [Variables and Observations](01-Data-Summarization#Variables-and-Observations) to rename the columns of `pandas DataFrame objects`. 
 
