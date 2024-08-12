@@ -473,7 +473,7 @@ These are **statistics** for **numeric** data; whereas, the `df['x'].value_count
 
 > **LEC New Topics**
 > 
-> 1. [sorting and (0-based) indexing](01-Data-Summarization#sorting-and-indexing)
+> 1. [sorting and (0-based) indexing](01-Data-Summarization#sorting-and-iloc-indexing)
 
 We can look into `pandas DataFrame object` datasets, such as the one introduced in LEC
 
