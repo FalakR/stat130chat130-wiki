@@ -6,12 +6,13 @@
 4. logical flow control... with [`if`](02-Coding#Logical-Flow-Control)/[`else`](02-Coding#Logical-Flow-Control)
     1. [`try-except` blocks](02-Coding#Logical-Flow-Control)
 
-**LEC Extensions**
+**LEC Extensions / New Topics**
 
 1. 
     1. `type()` not "types of data" like quantitative or qualitative
     2. `str` (and `sentence.split()`) as opposed to `int` versus `float` versus `bool`
     3. operator overloading polymorphism with `+` and `.sum()`
+    4. [What are `pandas DataFrame objects`?](02-Coding#what-are-pandas-dataframe-objects)
 2. `from scipy import stats`, `stats.multinomial`, and probability [and `np.random.choice`]
     1. conditional probability Pr(Y=y|X=x)
 3.
@@ -50,14 +51,17 @@ example_list
 A `dict` ("dictionary") is an object that uses a "key-value" pairs "look up structure" of "things" instead of a "sequential collection" organization that are created and represented using "key-value" pairs inside of curly braces (as demonstrated below).
 Dictionaries are **mutable** like lists, but each "key" of a dictionary is **unique** (so it uniquely references its corresponding "value"). Since a `dict` is based on a "look up" system, it is a so-called **unordered** object. This means that unlike tuples and lists which always remember their sequential order, dictionaries do not maintain their order of insertion and can change the order of items when the dictionary is modified.
 
-> For further explanation see the [Dictionaries](01-Data-Summarization#dictionaries) section of the previous week in the course wiki-textbook.
-
 ```python
 example_dict = {'id': 1, 'name': 'orange', 'price': 5.99} # There cannot be duplicate "keys" but there could be duplicate "values"
-example_dict['quantity'] = 10
+example_dict['quantity'] = 10 # adds a new "key-value" pair
+del example_dict['quantity'] # removes a "key-value" pair
 ```
 
-## np.arary
+The use of **dictionaries** to rename the columns of `pandas DataFrame objects` was previously seen in the [Variables and Observations](01-Data-Summarization#Variables-and-Observations) section of Week 01 of the course wiki-textbook; and an example of a more elaborate **dictionary** object and its extension (again related to the `pandas DataFrame objects` context) is given in the 
+"[What are `pandas DataFrame objects`?](02-Coding#what-are-pandas-dataframe-objects)" section below.
+
+
+## `np.arary`
 
 > 2. another key data type... [`np.array`](02-Coding#np.array)
 
@@ -168,6 +172,45 @@ except Exception as e:
 
 
 # LEC Extensions / New Topics
+
+
+## What are `pandas DataFrame objects`?
+
+> **LEC Extensions / New Topics**
+>
+> 1. 
+>     4. [What are `pandas DataFrame objects`?](02-Coding#what-are-pandas-dataframe-objects)
+  
+Week 02 formally introduced `list`, `dict`, `np.array` and `str` "object" `types` (as opposed to "data" `types`); but, you actually encountered `str`, `list`, and `dict` (**dictionary**) `python object types` in Week 01 (perhaps without particularly noticing) in the [Missingness I](01-Data-Summarization#Missingness-I), [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion), and [`Pandas` column data `types`](01-Data-Summarization#pandas-column-data-types) sections of the course wiki-textbook where they were used to defined `pandas DataFrame objects`.
+
+```python
+# Python `dict` types can be defined with curly brackets "{" and "}"
+data = {
+    'age': [25, 32, 47, 51], # 'age' is an `str` "string" type; `[25, 32, 47, 51]` is a `list`
+    'name': ['Alice', 'Bob', 'Charlie', 'David'], 
+    'income': [50000, 60000, 70000, 80000],
+    'has_pet': ['yes', 'no', 'no', 'yes']
+}
+df = pd.DataFrame(data)
+```
+
+So a `pandas DataFrame object` is fundamentally a **dictionary**, with column names corresponding to the "keys" of the **dictionary** and the values in the rows of the column corresponding to the "values" in the **dictionary** which are **lists** of data (all having the same length).
+
+> Technically, `pandas` first transforms each `list` (or `tuple`) into an `np.array` and then further transforms this into a `pd.Series`, finally making the `pandas DataFrame object` a collection of columns of  `pd.Series` objects which are accessed in the manner of a dictionary.
+
+The fundamental **dictionary** nature of a `pandas DataFrame object` is reflected in the way columns are referenced when working in `pandas`, as seen in the [Types I](01-Data-Summarization#Types-I) and [Missingness II](01-Data-Summarization#Missingness-II) sections in Week 01:
+
+```python
+df['age']  # returns the 'age' column
+del df['name']  # removes the 'name' column from the df object
+# both of which function analogously to how `dict` objects are managed
+
+# And, unsurprisingly, data is added to a `pd.DataFrame` object 
+# in just the same analogous manner as for a `dict` object
+df['city'] = ['New York', 'Los Angeles', 'Chicago', 'Houston']
+# just like how the data would be added to the original dictionary object
+data['city'] = ['New York', 'Los Angeles', 'Chicago', 'Houston']
+```
 
 ## More Loops 
 
