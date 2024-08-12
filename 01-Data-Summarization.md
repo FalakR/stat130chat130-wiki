@@ -20,7 +20,7 @@
 **LEC New Topics**
 
 1. [sorting and (0-based) indexing](01-Data-Summarization#sorting-and-iloc-indexing)
-2. [subsetting via conditionals and boolean selection](01-Data-Summarization#logical-conditionals-and-boolean-selection-subsetting-and indexing-v2)
+2. [subsetting via conditionals and boolean selection](01-Data-Summarization#logical-conditionals-boolean-selectionsubsetting-and-loc-indexing-v2)
 
 **Out of Scope**
 
@@ -521,11 +521,11 @@ df.iloc[0:5, :].index  # is also still (0, 1, 2, 3, 4)
 df.dropna().iloc[0:5, :].index  # is actually (0, 1, 2, 3, 6) instead of "indexes" (0, 1, 2, 3, 4) corresponding to "0:5"
 ```
 
-## Logical Conditionals and Boolean Selection/Subsetting and `.loc` indexing V2
+## Logical Conditionals, Boolean Selection/Subsetting, and `.loc` indexing V2
 
 > **LEC New Topics**
 > 
-> 2. [subsetting via conditionals and boolean selection](01-Data-Summarization#logical-conditionals-and-boolean-selection-subsetting-and indexing-v2)
+> 2. [subsetting via conditionals and boolean selection](01-Data-Summarization#logical-conditionals-boolean-selectionsubsetting-and-loc-indexing-v2)
 
 Sorting alphabetically (or even numerically) and then subsetting by actually row index numbers is going to end up feeling pretty tedious. Fortunately, we can use **logical conditionals** to **subset** to only the parts of a dataset we are interested in by using so-called **boolean selection**.
 
