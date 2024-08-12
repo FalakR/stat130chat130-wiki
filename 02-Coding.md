@@ -50,6 +50,8 @@ example_list
 A `dict` ("dictionary") is an object that uses a "key-value" pairs "look up structure" of "things" instead of a "sequential collection" organization that are created and represented using "key-value" pairs inside of curly braces (as demonstrated below).
 Dictionaries are **mutable** like lists, but each "key" of a dictionary is **unique** (so it uniquely references its corresponding "value"). Since a `dict` is based on a "look up" system, it is a so-called **unordered** object. This means that unlike tuples and lists which always remember their sequential order, dictionaries do not maintain their order of insertion and can change the order of items when the dictionary is modified.
 
+> For further explanation see the [Dictionaries](01-Data-Summarization#dictionaries) section of the previous week in the course wiki-textbook.
+
 ```python
 example_dict = {'id': 1, 'name': 'orange', 'price': 5.99} # There cannot be duplicate "keys" but there could be duplicate "values"
 example_dict['quantity'] = 10
