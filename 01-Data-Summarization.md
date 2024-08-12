@@ -469,7 +469,7 @@ its usual values and the general spread of values around this usual value, as wi
 
 These are **statistics** for **numeric** data; whereas, the `df['x'].value_counts()` **method** returns the count of each unique value in the data and so is contrastingly appropriate when column `x` contains non-numeric (**categorical**) data.  Using `df['x'].value_counts(dropna=False)` will additionally includes the number of missing values in the column in the returned counts; whereas, to determine this for **numeric** variables in the context of `df.describe()` would require a relative comparison to `df.shape` or `df['x'].size`.
 
-## Sorting and Indexing V1
+## Sorting and `.iloc` Indexing
 
 > **LEC New Topics**
 > 
@@ -521,7 +521,7 @@ df.iloc[0:5, :].index  # is also still (0, 1, 2, 3, 4)
 df.dropna().iloc[0:5, :].index  # is actually (0, 1, 2, 3, 6) instead of "indexes" (0, 1, 2, 3, 4) corresponding to "0:5"
 ```
 
-## Logical Conditionals and Boolean Selection/Subsetting (and Indexing V2)
+## Logical Conditionals and Boolean Selection/Subsetting and `.loc` indexing V2
 
 > **LEC New Topics**
 > 
