@@ -15,7 +15,7 @@
 3. [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion)
 5. 
     1. [`.dtypes` and `.astype()`](01-Data-Summarization#pandas-column-data-types)
-    2. dictionary `dict()` objects
+    2. [dictionary `dict()` objects](01-Data-Summarization#dictionaries)
     3. statistic calculation functions
 
 **LEC New Topics**
@@ -226,6 +226,9 @@ df.dropna(subset=['col1', 'col2'], axis='columns', inplace=True)
 
 The order in which you remove rows or columns with missing values to some degree determines the number of non-missing values that are "thrown away" when rows and columns are removed... so proceed intentionally and cautiously to when removing data so you don't "unnecessarily" through away data when you're removing rows and columns from a dataset.
 
+> The `del df['col']` expression is a somewhat unusual looking line of `python` code which is the result of the `python dict type` structure underlying `pandas DataFrame objects` as is described in the the [Dictionary](01-Data-Summarization#dictionaries) section below.
+
+
 ## Grouping and Aggregation
 
 > **TUT/HW Topics**
@@ -385,5 +388,136 @@ Something that you might like to do here is use `inplace`, e.g., `df['has_pet'].
 > For methods that do support `inplace`, such as `drop()`, `fillna()`, or `replace()`, the `inplace=True` parameter modifies the original DataFrame without creating a new one. Since `.astype()` doesn't support `inplace`, you need to explicitly assign the result to the column you want to change.
 
 
+## Dictionaries
+
+> **LEC Extensions**
+>
+> 5. 
+>     2. [dictionary `dict()` objects](01-Data-Summarization#dictionaries)
   
+You've already encountered `python dict` (dictionary) `object types` in the [Missingness I](01-Data-Summarization#Missingness-I), [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion), and [`Pandas` column data `types`](01-Data-Summarization#pandas-column-data-types) sections where they were used to defined `pandas DataFrame objects`; and, dictionaries were again used in the [Variables and Observations](01-Data-Summarization#Variables-and-Observations) to rename the columns of `pandas DataFrame objects`. 
+
+
+Certainly! Let's dive into how dictionaries (`dict` objects) are used in Python, particularly in the context of creating and manipulating pandas DataFrames.
+
+### What is a Dictionary in Python?
+
+A dictionary in Python is a collection of key-value pairs. Each key is unique, and it maps to a value, which can be any data type (e.g., integer, string, list, another dictionary, etc.).
+
+**Basic Example of a Dictionary:**
+
+```python
+person = {
+    'name': 'Alice',
+    'age': 25,
+    'city': 'New York'
+}
+```
+
+- `'name'`, `'age'`, and `'city'` are the keys.
+- `'Alice'`, `25`, and `'New York'` are the corresponding values.
+
+### Using a Dictionary to Create a DataFrame
+
+When working with pandas, you can use a dictionary to create a DataFrame. In this context, the keys of the dictionary represent the column names, and the values represent the data for those columns.
+
+**Example Using the Data from Before:**
+
+Let's create a DataFrame using a dictionary where:
+- The keys are `'age'`, `'name'`, `'income'`, and `'has_pet'`.
+- The values are lists containing the data for each column.
+
+```python
+import pandas as pd
+
+# Dictionary representing the data
+data = {
+    'age': [25, 32, 47, 51],
+    'name': ['Alice', 'Bob', 'Charlie', 'David'],
+    'income': [50000, 60000, 70000, 80000],
+    'has_pet': ['yes', 'no', 'no', 'yes']
+}
+
+# Create a DataFrame from the dictionary
+df = pd.DataFrame(data)
+
+# Display the DataFrame
+print(df)
+```
+
+**Output:**
+
+```
+   age     name  income has_pet
+0   25    Alice   50000     yes
+1   32      Bob   60000      no
+2   47  Charlie   70000      no
+3   51    David   80000     yes
+```
+
+- Here, `data` is a dictionary where each key represents a column name, and each value is a list containing the data for that column.
+- `pd.DataFrame(data)` converts the dictionary into a DataFrame.
+
+### Why Use Dictionaries to Create DataFrames?
+
+Using dictionaries to create DataFrames is common because it provides a clear and flexible way to organize data. Some benefits include:
+
+1. **Clarity**: It's easy to see which column corresponds to which data.
+2. **Flexibility**: You can easily adjust the data by modifying the dictionary (e.g., adding new columns or rows).
+3. **Readability**: The code is easy to read and understand, making it clear how the DataFrame is structured.
+
+### Adding New Columns Using a Dictionary
+
+You can also add new columns to an existing DataFrame by using a dictionary:
+
+**Example: Adding a New Column**
+
+```python
+# New column data
+new_data = {
+    'city': ['New York', 'Los Angeles', 'Chicago', 'Houston']
+}
+
+# Add the new column to the DataFrame
+df['city'] = new_data['city']
+
+# Display the updated DataFrame
+print(df)
+```
+
+**Output:**
+
+```
+   age     name  income has_pet         city
+0   25    Alice   50000     yes     New York
+1   32      Bob   60000      no  Los Angeles
+2   47  Charlie   70000      no      Chicago
+3   51    David   80000     yes      Houston
+```
+
+### Summary
+
+- A dictionary in Python is a collection of key-value pairs.
+- In the context of pandas, dictionaries are commonly used to create DataFrames, where the keys are column names and the values are lists of data for those columns.
+- This approach is flexible, easy to understand, and allows for straightforward data manipulation.
+
+If you need further clarification or more examples, feel free to ask!
+
+The explanation given there is worth repeating
+
+```python
+# The `{'a': 'A', 'b': 'B'}` is a "dictionary" `dict()` data type object.
+# In dictionary parlance, the lowercase letters in the above example are "keys" 
+# and the uppercase letters are the "values" which correspond the to the "keys"
+
+# In this case, the code specifies the columns to be renamed (the keys)
+# and what their new names should be (the values).
+```
+
+and 
+
+
+> 6. removing missing data... with [`df.dropna()`](01-Data-Summarization#Missingness-II) and [`del df['col']`](01-Data-Summarization#Missingness-II)
+
+> 3. 
 
