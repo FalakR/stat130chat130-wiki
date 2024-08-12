@@ -388,49 +388,6 @@ Something that you might like to do here is use `inplace`, e.g., `df['has_pet'].
 > For methods that do support `inplace`, such as `drop()`, `fillna()`, or `replace()`, the `inplace=True` parameter modifies the original DataFrame without creating a new one. Since `.astype()` doesn't support `inplace`, you need to explicitly assign the result to the column you want to change.
 
 
-## What are `pandas DataFrame objects`?
-
-> **LEC Extensions**
->
-> 5. 
->     2. [dictionary `dict()` objects](01-Data-Summarization#what-are-pandas-dataframe-objects)
+[What are `pandas DataFrame objects`?](01-Data-Summarization#what-are-pandas-dataframe-objects)
   
-Week 02 formally introduced `list`, `dict`, `np.array` and `str` "object" `types` (as opposed to "data" `types`); but, you actually encountered str`, `list`, and `dict` (**dictionary**) `python object types` in Week 01 (perhaps without particularly noticing) in the [Missingness I](01-Data-Summarization#Missingness-I), [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion), and [`Pandas` column data `types`](01-Data-Summarization#pandas-column-data-types) sections where they were used to defined `pandas DataFrame objects`.
-
-```python
-# Python `dict` types can be defined with curly brackets "{" and "}"
-data = {
-    'age': [25, 32, 47, 51], # 'age' is an `str` "string" type; `[25, 32, 47, 51]` is a `list`
-    'name': ['Alice', 'Bob', 'Charlie', 'David'], 
-    'income': [50000, 60000, 70000, 80000],
-    'has_pet': ['yes', 'no', 'no', 'yes']
-}
-df = pd.DataFrame(data)
-```
-
-So a `pandas DataFrame object` is fundamentally a **dictionary**, with column names corresponding to the "keys" of the **dictionary** and the values in the rows of the column corresponding to the "values" in the **dictionary** which are **lists** of data (all having the same length).
-
-> Technically, `pandas` first transforms each `list` (or `tuple`) into an `np.array` and then further transforms this into a `pd.Series`, finally making the `pandas DataFrame object` a collection of columns of  `pd.Series` objects which are accessed in the manner of a dictionary.
-
-The fundamental **dictionary** nature of a `pandas DataFrame object` is reflected in the way columns are referenced when working in `pandas`, as seen in the [Types I](01-Data-Summarization#Types-I) and [Missingness II](01-Data-Summarization#Missingness-II) sections in Week 01:
-
-```python
-del df['name']  # removes the 'name' column from the df object
-df['age']  # returns the 'age' column
-# both of which function analogously to how `dict` objects are managed
-
-# and, unsurprisingly, data is added to a `pd.DataFrame` objects 
-# in just the same analogous manner as with `dict` objects
-
-df['city'] = ['New York', 'Los Angeles', 'Chicago', 'Houston']
-# just like how the data would be added to the original dictionary
-data['city'] = ['New York', 'Los Angeles', 'Chicago', 'Houston']
-```
-
-# which is a more common usage alternative to 
-data = dict('age': [25, 32, 47, 51],
-            'name': ['Alice', 'Bob', 'Charlie', 'David'],
-            'income': [50000, 60000, 70000, 80000],
-            'has_pet': ['yes', 'no', 'no', 'yes'])
-[Variables and Observations](01-Data-Summarization#Variables-and-Observations) of to rename the columns of `pandas DataFrame objects`. 
 
