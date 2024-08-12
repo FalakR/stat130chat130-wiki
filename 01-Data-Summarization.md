@@ -388,7 +388,7 @@ Something that you might like to do here is use `inplace`, e.g., `df['has_pet'].
 > For methods that do support `inplace`, such as `drop()`, `fillna()`, or `replace()`, the `inplace=True` parameter modifies the original DataFrame without creating a new one. Since `.astype()` doesn't support `inplace`, you need to explicitly assign the result to the column you want to change.
 
 
-## Dictionaries
+## What are `pandas DataFrame objects`?
 
 > **LEC Extensions**
 >
