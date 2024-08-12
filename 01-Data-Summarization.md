@@ -225,7 +225,7 @@ df.dropna(subset=['col1', 'col2'], axis='columns', inplace=True)
 
 The order in which you remove rows or columns with missing values to some degree determines the number of non-missing values that are "thrown away" when rows and columns are removed... so proceed intentionally and cautiously to when removing data so you don't "unnecessarily" through away data when you're removing rows and columns from a dataset.
 
-> The `del df['col']` expression is a somewhat unusual looking line of `python` code which is the result of the `python dict type` structure underlying `pandas DataFrame objects` as is described in the the [Dictionary](01-Data-Summarization#dictionaries) section below.
+> The `del df['col']` expression is a somewhat unusual looking line of `python` code which is the result of the `python dict type` structure underlying `pandas DataFrame objects` which will be addressed in Week 02, and in the "[What are `pandas DataFrame objects`?](02-Coding#what-are-pandas-dataframe-objects)" section of the Week 02 course wiki-textbook.
 
 
 ## Grouping and Aggregation
@@ -386,7 +386,5 @@ Something that you might like to do here is use `inplace`, e.g., `df['has_pet'].
 
 > For methods that do support `inplace`, such as `drop()`, `fillna()`, or `replace()`, the `inplace=True` parameter modifies the original DataFrame without creating a new one. Since `.astype()` doesn't support `inplace`, you need to explicitly assign the result to the column you want to change.
 
-
-[What are `pandas DataFrame objects`?](01-Data-Summarization#what-are-pandas-dataframe-objects)
   
 
