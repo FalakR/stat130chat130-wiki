@@ -530,8 +530,9 @@ df.dropna().iloc[0:5, :].index  # is actually (0, 1, 2, 3, 6) instead of "indexe
 Sorting alphabetically (or even numerically) and then subsetting by actually row index numbers is going to end up feeling pretty tedious. Fortunately, we can use **logical conditionals** to **subset** to only the parts of a dataset we are interested in by using so-called **boolean selection**.
 
 ```python
-df_100plusHP = df[ df.HP >= 100 ]  # creates boolean with logical check; or, 
-df_Legendary = df[df.Legendary]  # already a boolean so no logical check needed; or
+# Inequality comaprison options are `>=`, `>`, `<`, and `<=`
+df_100plusHP = df[ df.HP >= 100 ]  # creates boolean selection with a logical conditional; or, 
+df_Legendary = df[df.Legendary]  # already a boolean selection so no logical conditional needed; or
 # Opposite of a boolean uses `~`; so, `df_NotLegendary = df[~df.Legendary]`
 df_Fire = df[ df['Type 1'] == 'Fire' ]
 # Opposite of `==` uses "!-"; so, df_NotFire = df[  df['Type 1'] == 'Fire' ] 
