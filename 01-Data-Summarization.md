@@ -385,6 +385,8 @@ The `.astype()` **method** is used to convert the data type of a column to anoth
 # Convert the type of 'has_pet' to "categorical" and the type of 'income' to "float"
 df['has_pet'] = df['has_pet'].astype('category') # `has_pet` is now of type `category`
 df['income'] = df['income'].astype('float64') # `income` has been converted from `int64` to `float64`, allowing for decimal points.
+# Alternatively, this could be done using `new_types = {'has_pet': 'category', 'income': 'float64'}`
+# df = df.astype(new_types)  # just like how `.rename()` can be used to change column names 
 df.dtypes
 ```
 
