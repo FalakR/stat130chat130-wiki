@@ -554,6 +554,7 @@ And more complex **logical conditionals** are available through the "and" `&` an
 ```python
 df.loc[ (df['Type 1'] == 'Fire') & (df.HP >= 100) , ["Name", "Attack", "Defense"] ]
 df.loc[ (df['Type 1'] == 'Fire') & ((df.HP >= 100) | df.Legendary) , ["Name", "Attack", "Defense", "Legendary"] ]
+df.loc[ ~(df['Type 1'] == 'Fire') & ((df.HP >= 100) & df.Legendary) , ["Name", "Type 1", "Attack", "Defense", "Legendary"] ]
 ```
 
 
