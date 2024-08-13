@@ -544,9 +544,16 @@ df_Fire
 If you want to subset to just some specific columns as well, you'll need to use the `.loc` **attribute** (as opposed to the `.iloc` **attribute**).
 
 ```python
-df.loc[df['Type 1'] == 'Fire', ["Name", "Attack", "Defense"]]
+df.loc[ df['Type 1'] == 'Fire', ["Name", "Attack", "Defense"] ]
 # df.iloc[df['Type 1'] == 'Fire', ["Name", "Attack", "Defense"]] won't work(!)
 # because `i` in `iloc` really needs index numbers, not "names" or "boolean selections"
+```
+
+And more complex **logical conditionals** are available through the "and" `&` and "or" `|` operations
+
+```python
+df.loc[ (df['Type 1'] == 'Fire') & (df.HP >= 100) , ["Name", "Attack", "Defense"] ]
+df.loc[ (df['Type 1'] == 'Fire') & ((df.HP >= 100) | df.Legendary) , ["Name", "Attack", "Defense"] ]
 ```
 
 
