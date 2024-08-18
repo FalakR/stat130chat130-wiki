@@ -8,7 +8,9 @@
 **TUT/HW Topics**
 
 1. [`import statsmodels.formula.api as smf`](06-Simple-Linear-Regression#statsmodel`)
-2. [`smf.ols` and "R-style" formulas](06-Simple-Linear-Regression#smf-ols-and-r-style-formulas-i])
+2. [`smf.ols`](06-Simple-Linear-Regression#smf-ols])
+    1. ["R-style" formulas I](06-Simple-Linear-Regression#r-style-formulas-i])
+    1. ["quoting" non-standard columns](06-Simple-Linear-Regression#quoting])
 3. [`smf.ols(y~x, data=df).fit().summary()`](06-Simple-Linear-Regression#fitting-models)
 4. [`.tables[1]`, `.params`, `.fittedvalues`, `.rsquared`](06-Simple-Linear-Regression#fitted-values and residuals)
     2. $\hat \beta_k$ versus $\beta_k$
@@ -23,30 +25,33 @@
 4. two sample permutation tests
 5. two sample bootstrapping
 
+
 # TUT/HW Topics
+
 
 ## `statsmodels`
 
-The `Python` modules providing analogous functionality to  "base" `R` programming language are `statsmodels` and `scipy.stats`. The `statsmodels` module allows us to use and statistically analyze statistical predictive models, like **simple** and **multiple linear regression** models (which we'll begin exploring now), whereas the `scipy.stats` provides functionality related to statistical distributions (which we've started to explore previously) as well as some **hypothesis testing** capabilities (which we've not considered since we've instead be considering this topic using **simulation**).
+The `Python` modules providing analogous functionality to "base" `R` statistical programming language are the `scipy.stats` and `statsmodels` modules. The `scipy.stats` module provides functionality related to statistical **distributions** (which we've previously started exploring), but it also provides some **hypothesis testing** capabilities (which we've not examined since we've instead been exploring this topic through **simulation**). The `statsmodels` module, on the other hand, combines the **distributional** and **hypothesis testing** concepts of the `scipy.stats` module to allow us to "fit" **linear regression** models and examine various aspects of the fitted models, including analyzing them using **hypothesis testing**.  
 
-The `statsmodels` module is well-regarded for its comprehensive range of tools for statistical modeling and hypothesis testing which help us evaluate and understanding evidence about relationships between variables in many fields, such as economics, biology, and social sciences. While there are a number of ways to use the `statsmodels` module, for STA130 we'll always its "formula" version.
+The `statsmodels` module is well-regarded for its comprehensive range of tools for statistical modeling and **hypothesis testing** which help us evaluate and understanding evidence about relationships between variables in many fields, such as economics, biology, and social sciences. While there are a number of ways to use the `statsmodels` module, for STA130 we'll always its "formula" version.
 
 ```python
 import statsmodels.formula.api as smf
 ```
 
-## `smf.ols` and R-Style formulas I
 
-The `smf.ols()` function is the "ordinary" **least squares** approach to **regression model fitting**. The **ordinary least squares** methodology will be explained in further detail in the Week 06 TUT but suffice it say it is the way we "fit regression models to data" in STA130. To specify a **simple linear regression** for a `pandas DataFrame object` dataset `df` where the ("**independent**" **predictor**) column `"x"` variable is used to predict ("**dependent**" **outcome**) column `y` variable we use the "formula" `"y~x"` which corresponds to 
+## `smf.ols` 
 
-$$Y_i = \beta_0 + \beta_1 x_i + \epsilon_i, \quad \text{ where } \quad \epsilon_i \sim N(0, \sigma^2)$$
+The "ols" in `smf.ols()` stands for "ordinary least squares". The **ordinary least squares** methodology will be explored further in HW06, but suffice it to say for now that it is "how linear regression models are fit to data" in STA130. To specify a **simple linear regression** model in the context of a `pandas DataFrame object` dataset `df` where the ("**independent**" **predictor**) column `x` variable is used to predict the ("**dependent**" **outcome**) column `y` variable, use the "formula" `"y ~ x"` which corresponds to 
+
+$$Y_i = \beta_0 + \beta_1 x_i + \epsilon_i, \quad \text{ where } \quad \epsilon_i \sim \mathcal{N}(0, \sigma^2) \quad \text{ or } \quad Y_i \sim \mathcal{N}(\beta_0 + \beta_1 x_i , \sigma^2)$$
 
 ```python
 linear_specification = "y ~ x"  # automatically assumes the "Intercept" beta0 will be included
-model_data_spefication = smf.ols(linear_specification, data=df)
+model_data_specification = smf.ols(linear_specification, data=df)
 ```
 
-In the example above `x` and `y` would be names of columns in `df`. If `x` and `y` in `df` respectively corresponded to "parents average height" and "child's height" (as in Francis Galton's [classical study](https://en.wikipedia.org/wiki/Regression_toward_the_mean#Discovery) which popularized the notion of "regression to the mean" from which the term **regression** was derived), then `model_data_spefication` would be using "parents average height" (`x`) to predict "child's height" (`y`). If rather than `x` and `y` the column names were just `parent_height` and `child_heigh"` directly, then we would instead just use 
+In the example above `x` and `y` would be names of columns in `df`. If `x` and `y` in `df` respectively corresponded to "parents average height" and "child's height" (as in Francis Galton's [classical study](https://en.wikipedia.org/wiki/Regression_toward_the_mean#Discovery) which popularized the concept of "regression to the mean" which all **regression** methodologies are now named after), then `model_data_specification` indicates using "parents average height" (`x`) to predict "child's height" (`y`). If rather than `x` and `y` the column names were just `parent_height` and `child_heigh"` directly, then we would instead just use 
 
 ```python
 import pandas as pd
@@ -64,10 +69,16 @@ data = {
 df = pd.DataFrame(data)
 
 linear_specification = "child_height ~ parent_height"  # not `linear_specification = "y~x"`
-model_data_spefication = smf.ols(linear_specification, data=df)
+model_data_specification = smf.ols(linear_specification, data=df)
 ```
 
-The `linear_specification` is a so-called "R-style" formula which provide an intuitive and easy to read way to express the specification of the **linear form** of a **regression** model. If the columns referenced by the **linear form** defined in `linear_specification` have "spaces" or "special characters" (like an apostrophe) then a special "quote" `Q("...")` or `` syntax is required to reference them.  It might be easier and better for readability to just use `df.rename(...)` instead to change the name in these situations...
+### R-Style formulas I
+
+The `linear_specification` is a so-called "R-style formula" which provides a simple way to specify the **linear form** of a **regression** model. A "formula" of the form `"y ~ x"` automatically assumes the "Intercept" $\beta_0$ will be included in the model specification, with **outcome** "y" on the left and **predictors** "x" on the right, as described in the previous section. The "outcome on the left and predictors on the right" formulation becomes increasingly intuitive in the context of **multiple** (as opposed to **simple**) **linear regression**. The `"child_height ~ parent_height"` is a **simple linear regression** specification because there is a single **predictor** variable; whereas, `"child_height ~ parent_height + nationality"` is a **multiple linear regression** specification because there is more than one **predictor** variable. We will return to **multiple linear regression** in Week 07, so consideration of this topic can be safely postponed for now.
+
+### Quoting
+
+If the columns referenced by the **linear form** defined in `linear_specification` have "spaces" or "special characters" (like an apostrophe) then a special "quote" `Q("...")` or `` syntax is required to reference them.  It might be easier and better for readability to just use `df.rename(...)` instead to change the name in these situations...
 
 ```python
 linear_specification = 'Q("child\'s height") ~ Q("parents average height")' # or
@@ -82,7 +93,7 @@ After specifying the data and the **linear form** of the **regression model** in
 $$\hat y_i = \hat \beta_0 + \hat \beta_1 x_i$$
 
 ```python
-model_data_fit = model_data_spefication.fit()  # estimate model parameters (coefficients) based on `df` and perform related calculations
+model_data_fit = model_data_specification.fit()  # estimate model parameters (coefficients) based on `df` and perform related calculations
 model_data_fit.params  # the estimate model parameters (coefficients) based on `df`
 ```
 
