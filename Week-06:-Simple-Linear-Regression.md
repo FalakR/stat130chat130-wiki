@@ -202,7 +202,8 @@ data_fitted_model.summary().tables[1]  # what we need for *hypothesis testing* i
 
 The `coef` column of `data_fitted_model.summary().tables[1]` corresponds to `data_fitted_model.params` discussed above; but, the additional `P>|t|` column includes the **p-values** associated with a **hypothesis test** for each of the **coefficients**.
 - Specifically, the values in `P>|t|` are **p-values** for a **null hypothesis** that the **true coefficient value** is zero.
-- In the case of the **true slope coefficient** $\beta_1$ representing the "average change in the **outcome** for a one-unit increase in the **predictor**" this **null hypothesis** corresponds to the assumption of "**no linear association** between the **outcome** and **predictor variables** 'on average'".
+- In the case of the **true slope coefficient** $\beta_1$ representing the "average change in the **outcome** for a one-unit increase in the **predictor**" 
+    - this **null hypothesis** corresponds to the assumption of "**no linear association** between the **outcome** and **predictor variables** 'on average'".
 - Formally, this "no linear relationship" **null hypothesis** would then be stated as $H_0: \beta_1 = 0$ where $\beta_1$ is the hypothesized **parameter** value which the associated **statistic** $\hat \beta_1$ **estimates**
 - And rarely would there be interested in $H_0: \beta_0 = 0$ since an **intercept** value of $0$ does not generally have a meaningful interpretation, and the context of **linear regression** is typically just concerned with evaluating the relationship between the **outcome** and **predictor variables**.
 
