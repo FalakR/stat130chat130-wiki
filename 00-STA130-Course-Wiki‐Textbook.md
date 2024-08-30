@@ -6,7 +6,7 @@
 4. Course [wiki-textbook](https://github.com/pointOfive/STA130_ChatGPT/wiki/)
 
 
-# 01 Data Summarization
+# Week 01 Data Summarization
 
 **TUT/HW Topics**
 
@@ -41,7 +41,7 @@
 4. ...further "data wrangling topics" such as "joining" and "merging"; "pivoting", "wide to long", and "tidy" data formats; etc.
 
 
-# 02 Coding
+# Week 02 Coding
 
 **TUT/HW Topics**
 
@@ -75,7 +75,7 @@
 5. ...such as text manipulation with `.apply(lambda x: ...)`, `.replace()`, `re` (which are introduced but are generally out of scope for STA130)
 
 
-# 03 Data Visualization
+# Week 03 Data Visualization
 
 **TUT/HW Topics**
 
@@ -108,7 +108,7 @@
 4. ...such as kernel functions for kernel density estimation
 5. ...bokeh, shiny, d3, ...
 
-# 04 Bootstrapping
+# Week 04 Bootstrapping
 
 **TUT/HW Topics**
 
@@ -138,7 +138,7 @@
 4. ... the alternative sampling function `np.random.choice(size, p, replace=True)` which will be introduced for different purposes later
 
 
-# 05 Hypothesis Testing
+# Week 05 Hypothesis Testing
 
 **TUT/HW Topics**
 
@@ -162,7 +162,7 @@
 3. Simulation versus theoretical hypothesis testing frameworks, z-tests and t-tests, parametric versus nonparametric hypothesis testing frameworks, other tests such as Chi-squared or F-tests, etc...
 
 
-# 06 Simple Linear Regression
+# Week 06 Simple Linear Regression
 
 **LEC 1 New Topics**
 
