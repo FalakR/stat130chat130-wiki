@@ -1,28 +1,27 @@
-**TUT/HW Topics**
+#### **TUT/HW Topics**
 
-1. importing libraries... like [`pandas`](01-Data-Summarization#import)
-2. loading data... with [`pd.read_csv()`](01-Data-Summarization#read_csv)
-3. counting missing values... with [`df.isna().sum()`](01-Data-Summarization#Missingness-I)
-4. observations (rows) and variables (columns)... [`df.shape`](01-Data-Summarization#Variables-and-Observations) and [`df.columns`](01-Data-Summarization#Variables-and-Observations)
-5. numeric versus non-numeric... [`df.describe()`](01-Data-Summarization#Types-I) and [`df.value_counts()`](01-Data-Summarization#Types-I)
-6. removing missing data... with [`df.dropna()`](01-Data-Summarization#Missingness-II) and [`del df['col']`](01-Data-Summarization#Missingness-II)
-7. grouping and aggregation.... with [`df.groupby("col1")["col2"].describe()`](01-Data-Summarization#Grouping-and-Aggregation)
+1. importing libraries... like [_pandas_](01-Data-Summarization#import)
+2. loading data... with [_pd.read_csv()_](01-Data-Summarization#read_csv)
+3. counting missing values... with [_df.isna().sum()_](01-Data-Summarization#Missingness-I)
+4. observations (rows) and variables (columns)... [_df.shape_](01-Data-Summarization#Variables-and-Observations) and [_df.columns_](01-Data-Summarization#Variables-and-Observations)
+5. numeric versus non-numeric... [_df.describe()_](01-Data-Summarization#Types-I) and [_df.value_counts()_](01-Data-Summarization#Types-I)
+6. removing missing data... with [_df.dropna()_](01-Data-Summarization#Missingness-II) and [_del df['col']_](01-Data-Summarization#Missingness-II)
+7. grouping and aggregation.... with [_df.groupby("col1")["col2"].describe()_](01-Data-Summarization#Grouping-and-Aggregation)
 
-**LEC Extensions**
+#### **LEC Extensions**
 
 2. [function/method arguments](01-Data-Summarization#functionmethod-arguments) (like `encoding` and `inplace` and `dropna`)
 3. [boolean values and coercion](01-Data-Summarization#Boolean-Values-and-Coercion)
 
-
-...5. i. [`.dtypes` and `.astype()`](01-Data-Summarization#pandas-column-data-types)<br>
+...5. i. [_.dtypes_ and _.astype()_](01-Data-Summarization#pandas-column-data-types)\
 ......ii. [statistic calculation functions](01-Data-Summarization#some-statistics-calculations)
 
-**LEC New Topics**
+#### **LEC New Topics**
 
 1. [sorting and (0-based) indexing](01-Data-Summarization#sorting-and-iloc-indexing)
 2. [subsetting via conditionals and boolean selection](01-Data-Summarization#logical-conditionals-boolean-selectionsubsetting-and-loc-indexing-v2)
 
-**Out of Scope**
+#### **Out of Scope**
 
 1. Material covered in future weeks
 2. Anything not substantively addressed above...
@@ -34,8 +33,8 @@
 ## import
 
 > **TUT/HW Topics**
-> 
-> 1. importing libraries... like [`pandas`](01-Data-Summarization#import)
+>
+> 1. importing libraries... like [_pandas_](01-Data-Summarization#import)
 
 ```python
 import pandas as pd # aliasing usage is `pd.read_csv()`
@@ -46,8 +45,8 @@ from pandas import read_csv # funtion only import usage is `read_csv()`
 ## read_csv
 
 > **TUT/HW Topics**
-> 
-> 2. loading data... with [`pd.read_csv()`](01-Data-Summarization#read_csv)
+>
+> 2. loading data... with [_pd.read_csv()_](01-Data-Summarization#read_csv)
 
 ```python
 import pandas as pd
@@ -60,38 +59,38 @@ pd.read_csv("./path/to/filename.csv") # "." denotes the "current directory"
 pd.read_csv("https://www.url.com/path/to/filename.csv")
 ```
 
-**Using URL links**
+#### **Using URL links**
 
 When accessing an online file, you must link to an actual "raw" `.csv` file.
+
 - This link "looks like" an actual `.csv` file, **but it is not**: [https://github.com/mwaskom/seaborn-data/blob/master/titanic.csv](https://github.com/mwaskom/seaborn-data/blob/master/titanic.csv)
-    - If you follow the link you'll see it's some sort of webpage that visualizes a `.csv` file, but it is not the actual "raw" `.csv` file.
+  - If you follow the link you'll see it's some sort of webpage that visualizes a `.csv` file, but it is not the actual "raw" `.csv` file.
 - Here is the link to the actual "raw" `.csv` file that can be found on the above page: [https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv](https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv)
-   - If you follow the link you'll see it's now the actual "raw" `.csv` file.
+  - If you follow the link you'll see it's now the actual "raw" `.csv` file.
 
 ```python
 # will not work
 failing_url = "https://github.com/mwaskom/seaborn-data/blob/master/titanic.csv"
-titanic_df = pd.read_csv(failing_url) 
+titanic_df = pd.read_csv(failing_url)
 # does not access an actual "raw" `.csv` file
 
 # will work
 working_url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv"
-titanic_df = pd.read_csv(working_url) 
+titanic_df = pd.read_csv(working_url)
 # links directly to an actual "raw" `.csv` file
 ```
 
 See the [Function/Method Arguments](01-Data-Summarization#functionmethod-arguments) section below for further details!
- 
 
 ## Missingness I
 
 > **TUT/HW Topics**
-> 
-> 3. counting missing values... with [`df.isna.sum()`](01-Data-Summarization#Missingness-I)
+>
+> 3. counting missing values... with [_df.isna.sum()_](01-Data-Summarization#Missingness-I)
 
 In Python we generally use the `pandas` library to count missing values.
 Specifically, we use the `.isna()` (or equivalently `isnull()` since it is just an **alias** for `.isna()`) followed by `.sum()`.
- 
+
 > Sometimes we may additionally use `axis=1` and `.any()`.
 
 Here’s a quick example of how this is done:
@@ -130,18 +129,18 @@ For more details regarding "boolean values and coercion", see [Boolean Values an
 ## Variables and Observations
 
 > **TUT/HW Topics**
-> 
-> 4. observations (rows) and variables (columns)... [`df.shape`](01-Data-Summarization#variables-and-observations) and [`df.columns`](01-Data-Summarization#Variables-and-Observations)
+>
+> 4. observations (rows) and variables (columns)... [_df.shape_](01-Data-Summarization#variables-and-observations) and [_df.columns_](01-Data-Summarization#Variables-and-Observations)
 
 ```python
 import pandas as pd
 
 titanic_df = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv')
 
-titanic_df.shape # number of rows and columns 
+titanic_df.shape # number of rows and columns
 # this is an "attribute" not a "method" so it does not have end with parenthesis `()`
 
-titanic_df.columns # a list of the names of the columns 
+titanic_df.columns # a list of the names of the columns
 # also an attribute...
 
 # You can rename columns as desired...
@@ -149,7 +148,7 @@ titanic_df.columns # a list of the names of the columns
 df.rename(columns={'a': 'A', 'b': 'B'}, inplace=True)
 
 # The `{'a': 'A', 'b': 'B'}` is a "dictionary" `dict()` data type object.
-# In dictionary parlance, the lowercase letters in the above example are "keys" 
+# In dictionary parlance, the lowercase letters in the above example are "keys"
 # and the uppercase letters are the "values" which correspond the to the "keys"
 
 # In this case, the code specifies the columns to be renamed (the keys)
@@ -158,11 +157,11 @@ df.rename(columns={'a': 'A', 'b': 'B'}, inplace=True)
 
 **Observations** are usually organized as rows in a dataset. Each observation represents a single entity upon which data has been measured and recorded. For example, if you’re analyzing a dataset of patients in a hospital, each patient would be an observation.
 
-**Variables** are the different things that can be measured and recorded for each entity, and thus usually correspond to the columns in a dataset. So, the **observation** is comprised of all the values in the columns (or **variables**) of a dataset. 
+**Variables** are the different things that can be measured and recorded for each entity, and thus usually correspond to the columns in a dataset. So, the **observation** is comprised of all the values in the columns (or **variables**) of a dataset.
 
 > These concepts are discussed in more detail, [here](https://www.statology.org/observation-in-statistics/).
 
-We're likely to intuitively think of an "observation" as a single value, and we often analyze the values of a single column of data which tends to further bolsters the concept that an "observation" can be thought of as a single value. Since an "observation" refers to whatever set of variables we're considering, there is not a problem with this simplified view of things at the moment. 
+We're likely to intuitively think of an "observation" as a single value, and we often analyze the values of a single column of data which tends to further bolsters the concept that an "observation" can be thought of as a single value. Since an "observation" refers to whatever set of variables we're considering, there is not a problem with this simplified view of things at the moment.
 
 Variables can be [numerical (quantitative) or categorical (qualitative)](https://uniskills.library.curtin.edu.au/numeracy/statistics/data-variable-types/). For instance, a [patient dataset](http://www.statistics4u.info/fundstat_eng/cc_variables.html) might include the variables of age, weight, blood type, etc.
 
@@ -171,8 +170,8 @@ Variables can be [numerical (quantitative) or categorical (qualitative)](https:/
 ## Types I
 
 > **TUT/HW Topics**
-> 
-> 5. numeric versus non-numeric... [`df.describe()`](01-Data-Summarization#Types-I) and [`df.value_counts()`](01-Data-Summarization#Types-I)
+>
+> 5. numeric versus non-numeric... [_df.describe()_](01-Data-Summarization#Types-I) and [_df.value_counts()_](01-Data-Summarization#Types-I)
 
 The `.describe()` **method** provides descriptive statistics that summarize **numerical data** in terms of its location (or position) and scale (or spread). Its provides mean, standard deviation, median (50th percentile), quartiles (25th and 75th percentile), and minimum and maximum values.
 
@@ -185,7 +184,7 @@ Here’s a demonstration using the Titanic dataset.
 ```python
 import pandas as pd
 
-# Load the Titanic dataset 
+# Load the Titanic dataset
 titanic_df = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv')
 
 # Use df.describe() to get descriptive statistics for numerical features
@@ -202,8 +201,8 @@ print(embarked_counts)
 ## Missingness II
 
 > **TUT/HW Topics**
-> 
-> 6. removing missing data... with [`df.dropna()`](01-Data-Summarization#Missingness-II) and [`del df['col']`](01-Data-Summarization#Missingness-II)
+>
+> 6. removing missing data... with [_df.dropna()_](01-Data-Summarization#Missingness-II) and [_del df['col']_](01-Data-Summarization#Missingness-II)
 
 ```python
 # Assuming 'df' is your DataFrame
@@ -226,14 +225,13 @@ df.dropna(subset=['col1', 'col2'], axis='columns', inplace=True)
 
 The order in which you remove rows or columns with missing values to some degree determines the number of non-missing values that are "thrown away" when rows and columns are removed... so proceed intentionally and cautiously to when removing data so you don't "unnecessarily" through away data when you're removing rows and columns from a dataset.
 
-> The `del df['col']` expression is a somewhat unusual looking line of `python` code which is the result of the `python dict type` structure underlying `pandas DataFrame objects` which will be addressed in Week 02, and in the "[What are `pandas DataFrame objects`?](02-Coding#what-are-pandas-dataframe-objects)" section of the Week 02 course wiki-textbook.
-
+> The `del df['col']` expression is a somewhat unusual looking line of `python` code which is the result of the `python dict type` structure underlying `pandas DataFrame objects` which will be addressed in Week 02, and in the "[What are pandas DataFrame objects?](02-Coding#what-are-pandas-dataframe-objects)" section of the Week 02 course wiki-textbook.
 
 ## Grouping and Aggregation
 
 > **TUT/HW Topics**
-> 
-> 7. grouping and aggregation.... with [`df.groupby("col1")["col2"].describe()`](01-Data-Summarization#Grouping-and-Aggregation)
+>
+> 7. grouping and aggregation.... with [_df.groupby("col1")["col2"].describe()_](01-Data-Summarization#Grouping-and-Aggregation)
 
 Grouping and aggregation are powerful concepts in data analysis, particularly with pandas in Python. They allow you to organize data into groups and then perform operations on those groups to extract insights.
 
@@ -241,15 +239,13 @@ Grouping and aggregation are powerful concepts in data analysis, particularly wi
 
 **Aggregation** refers to computing summaries of each of the groups once they're separated. Some examples of aggregation functions are the `.sum()`, `.mean()`, `.min()`, `.max()`, and `.count()` **methods**. When you use `df.groupby("col1")["col2"].describe()` you're doing all of these at once (as well as `np.quantile([25,50,75])`).
 
-> After `df.groupby("col1")` groups the data by unique values in `"col1"`, the subsequent `["col2"]` selects the `"col2"` column from the data, and then for each group the concluding `.describe()` computes the summary statistics for `"col2"` within each group. Namely, the count, mean, standard deviation, minimum, 25% (first quartile), 50% (median), 75% (third quartile), and maximum values for `"col2"` within each group. 
+> After `df.groupby("col1")` groups the data by unique values in `"col1"`, the subsequent `["col2"]` selects the `"col2"` column from the data, and then for each group the concluding `.describe()` computes the summary statistics for `"col2"` within each group. Namely, the count, mean, standard deviation, minimum, 25% (first quartile), 50% (median), 75% (third quartile), and maximum values for `"col2"` within each group.
 
 Missing values in the grouping column (`"col1"`) will result in a separate group if there are any, while the `.describe()` **method** automatically excludes missing values when calculating descriptive statistics for `"col2"`.
 
-
 # LEC Extensions
 
-
-## Function/Method Arguments 
+## Function/Method Arguments
 
 > **LEC Extensions**
 >
@@ -259,7 +255,7 @@ The `pandas.read_csv` `python` (`pandas`) **function** is used to read a CSV (Co
 
 ```python
 import pandas as pd
-pd.read_csv? # add ? to the end of a function to see the so-called 
+pd.read_csv? # add ? to the end of a function to see the so-called
 # *signature* of the function... that is, all the possible *arguments* of a function
 ```
 
@@ -269,7 +265,7 @@ In `python`, **function arguments** are named and can be optional if they have d
 
 ```python
 trickily_encoded_file = "https://raw.githubusercontent.com/pointOfive/STA130_F23/main/Data/amazonbooks.csv"
-# remember, "https://github.com/pointOfive/STA130_F23/blob/main/Data/amazonbooks.csv" won't work 
+# remember, "https://github.com/pointOfive/STA130_F23/blob/main/Data/amazonbooks.csv" won't work
 # because that's not actually a link to a real CSV file [as you can see if you go to that github page]...
 
 pd.read_csv(trickily_encoded_file, encoding='UTF-8') # fails
@@ -277,38 +273,33 @@ pd.read_csv(trickily_encoded_file, encoding='UTF-8') # fails
 #pd.read_csv(trickily_encoded_file, encoding="ISO-8859-1")# works!
 ```
 
-There are likely many `pandas` **arguments** that you will find useful and helpful. For `pd.read_csv` some **arguments** address some relatively common special cases are 
+There are likely many `pandas` **arguments** that you will find useful and helpful. For `pd.read_csv` some **arguments** address some relatively common special cases are
 
 - `sep` for different file types
-- `skiprows` and `names` to control column names 
+- `skiprows` and `names` to control column names
 - and see more [here](https://note.nkmk.me/en/python-pandas-read-csv-tsv/)<br>(because ``pd.read_csv?` will probably be more confusing that helpful the first few times you look at it...)
 
-Moving beyond `pd.read_csv`, we've already seen many useful **arguments** 
+Moving beyond `pd.read_csv`, we've already seen many useful **arguments**
 
 - `df[column_name].value_counts(dropna=False)` included a count of the number of missing observations along with the counts of the unique values in `column_name`
-- `df.rename(columns={'a': 'A', 'b': 'B'}, inplace=True)` allowed us to rename the columns of an existing data frame 
-    - where `inplace=True` updated `df` without requiring the reassingment `df = df.rename(columns={'a': 'A', 'b': 'B'})`, and this behavior is also present in `df.dropna(inplace=True)`
--  and `df.isna().any(axis=1).sum()`, `df.dropna(how='all', inplace=True)`, and `df.dropna(thresh=2, inplace=True)` all provided useful control over how data missing data was removed from a `pandas DataFrame object`
+- `df.rename(columns={'a': 'A', 'b': 'B'}, inplace=True)` allowed us to rename the columns of an existing data frame
+  - where `inplace=True` updated `df` without requiring the reassingment `df = df.rename(columns={'a': 'A', 'b': 'B'})`, and this behavior is also present in `df.dropna(inplace=True)`
+- and `df.isna().any(axis=1).sum()`, `df.dropna(how='all', inplace=True)`, and `df.dropna(thresh=2, inplace=True)` all provided useful control over how data missing data was removed from a `pandas DataFrame object`
 
 ```python
 df = pd.read_csv(tricky_file, encoding="ISO-8859-1")
 # df = df.dropna() # instead of this, just use
-df.dropna(inplace=True) # where the so-called "side-effect" of this *method* 
+df.dropna(inplace=True) # where the so-called "side-effect" of this *method*
 # is to transform the `df` object into an updated form without missing values
 
-# We typically think of "functions" as "returning values or object" 
+# We typically think of "functions" as "returning values or object"
 # as in the case of `df = df.dropna()`; but, `df.dropna(inplace=True)`
 # demonstrates that functions can operate in terms of "side-effects" on objects as well...
 ```
 
-> Technically, `pd.read_csv` is a **function** while `df.value_counts(...)`, `df.rename(...), `df.dropna(...)`, `df.isna()...`, etc., are all **methods**. The reason for the difference is that a **method** is a "function" that belongs to the `df` `pandas DataFrame object`. You can think of a **method** like `.dropna(...)` as a "function" who's first (default) **argument** is the `df` `pandas DataFrame object`.
+> Technically, `pd.read_csv` is a **function** while `df.value_counts(...)`, `df.rename(...), `df.dropna(...)`, `df.isna()...`, etc., are all **methods**. The reason for the difference is that a **method** is a "function" that belongs to the `df` `pandas DataFrame object`. You can think of a **method** like `.dropna(...)`as a "function" who's first (default) **argument** is the`df` `pandas DataFrame object`.
 >
-> - We have already used the term **method** above (without explicitly defining it) in sections<br>
->   [4. Variables and Observations](01-Data-Summarization#Variables-and-Observations)<br>
->   [5. Types I](01-Data-Summarization#Types-I)<br>
->   [6. Missingness II](01-Data-Summarization#Missingness-II)<br>
->   [7. Grouping and Aggregation](01-Data-Summarization#Grouping-and-Aggregation)
-
+> - We have already used the term **method** above (without explicitly defining it) in sections<br> > [4. Variables and Observations](01-Data-Summarization#Variables-and-Observations)<br> > [5. Types I](01-Data-Summarization#Types-I)<br> > [6. Missingness II](01-Data-Summarization#Missingness-II)<br> > [7. Grouping and Aggregation](01-Data-Summarization#Grouping-and-Aggregation)
 
 ## Boolean Values and Coercion
 
@@ -346,13 +337,11 @@ In the output, `bool_df` shows that in data in the DataFrame is boolean after ap
 
 > For more details regarding "counting missing values", see [Missingness I](01-Data-Summarization#Missingness-I) and [Missingness II](01-Data-Summarization#Missingness-II). For additional examples creating boolean values using logical conditionals, see [Logical Conditionals and Boolean Selection/Subsetting](01-Data-Summarization#logical-conditionals-and-boolean-selection-subsetting) below.
 
-
-## `Pandas` column data `types`
+## _Pandas_ column data _types_
 
 > **LEC Extensions**
-> 
-> 5. 
->    1. [`.dtypes` and `.astype()`](01-Data-Summarization#pandas-column-data-types)
+>
+> 5.  1.  [_.dtypes and .astype()_](01-Data-Summarization#pandas-column-data-types)
 
 As demonstrated below
 
@@ -371,7 +360,7 @@ data = {
     'income': [50000, 60000, 70000, 80000],
     'has_pet': ['yes', 'no', 'no', 'yes']
 }
-# Here, `age` and `income` are numerical (integers), while `name` and `has_pet` are given the `type` of `object` 
+# Here, `age` and `income` are numerical (integers), while `name` and `has_pet` are given the `type` of `object`
 #   (which in the case of `has_pet` could be interpreted as **categorical** data; whereas
 #    `name` is probably better interpreted as an identifier rather than a "cateogory")
 
@@ -386,7 +375,7 @@ The `.astype()` **method** is used to convert the data type of a column to anoth
 df['has_pet'] = df['has_pet'].astype('category') # `has_pet` is now of type `category`
 df['income'] = df['income'].astype('float64') # `income` has been converted from `int64` to `float64`, allowing for decimal points.
 # Alternatively, this could be done using `new_types = {'has_pet': 'category', 'income': 'float64'}`
-# df = df.astype(new_types)  # just like how `.rename()` can be used to change column names 
+# df = df.astype(new_types)  # just like how `.rename()` can be used to change column names
 df.dtypes
 ```
 
@@ -399,32 +388,26 @@ Tying these "data" types back to the `.describe()` and `...value_counts()` **met
 >
 > For methods that do support `inplace`, such as `drop()`, `fillna()`, or `replace()`, the `inplace=True` parameter modifies the original DataFrame without creating a new one. Since `.astype()` doesn't support `inplace`, you need to explicitly assign the result to the column you want to change.
 
-  
 ## Some Statistics Calculations
 
 > **LEC Extensions**
-> 
-> 5. 
->     2. [statistic calculation functions](01-Data-Summarization#some-statistics-calculations)
+>
+> 5.  2. [statistic calculation functions](01-Data-Summarization#some-statistics-calculations)
 
-The `.describe()` method in `pandas` provides a quick statistical summary of numerical columns in a `pandas DataFrame object`. It computes several key statistics, which are especially useful for understanding the nature of the distribution of the data (such as 
+The `.describe()` method in `pandas` provides a quick statistical summary of numerical columns in a `pandas DataFrame object`. It computes several key statistics, which are especially useful for understanding the nature of the distribution of the data (such as
 its usual values and the general spread of values around this usual value, as will be discussed later in Week 03). Here's an explanation of the statistical functions computed by `.describe()` and their corresponding programatic or mathematical notations as applicable.
 
 - **Count**: `df['col'].notna().sum()`
 
   The number of non-missing entries in each column, generally referenced mathematically as $n$
 
+- **Sample Mean**: `df['x'].mean()`
 
-
-- **Sample Mean**: `df['x'].mean()` 
-
-  The average value of the entries, generally notated and computed (where $i$ "indexes" the observations) as 
+  The average value of the entries, generally notated and computed (where $i$ "indexes" the observations) as
 
   $$\bar x = \frac{1}{n} \sum_{i=1}^{n} x_i$$
 
-
-
-- **Sample Standard Deviation**: `df['x'].std()` 
+- **Sample Standard Deviation**: `df['x'].std()`
 
   A measure of the spread (or dispersion) of the values which is "the ([geometric mean](https://en.wikipedia.org/wiki/Geometric_mean)) average distance of points away from the sample mean $\bar x$" defined by the formula (where $i$ "indexes" the observations)
 
@@ -433,48 +416,39 @@ its usual values and the general spread of values around this usual value, as wi
   > where $n-1$ is used rather than $n$ for "technical purposes" related to so-called "estimator bias" which is a topic to be addressed in a more advanced statistics course and is beyond the scope of STA130.
   >
   > The **sample variance** is the **squared standard deviation**
-  > 
+  >
   > $$s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2$$
-
-
 
 - **Minimum**: `df['x'].min()`
 
-  The smallest value in the column, notated mathematically (where $i$ "indexes" the observations) as 
+  The smallest value in the column, notated mathematically (where $i$ "indexes" the observations) as
 
   $$\min_{i} x_i = \min(x_1, x_2, \ldots, x_n)$$
-
-
 
 - **25th Percentile (25%)**: `df['x'].quantile(0.25)`
 
   The value below which 25% of the data falls, often notated mathematically as $Q_1$
 
-
-
 - **Median / 50th Percentile (50%)**: `df['x'].quantile(0.5)`
 
   The middle value in the data set, dividing the data into two equal halves such that 50% of the data falls below this value, usually referred to as the **median** (rather than $Q_2$)
-
 
 - **75th Percentile (75%)**: `df['x'].quantile(0.75)`
 
   The value below which 25% of the data falls, often notated mathematically as $Q_3$
 
-
-
 - **Minimum**: `df['x'].min()`
 
-  The largest value in the column, notated mathematically (where $i$ "indexes" the observations) as 
+  The largest value in the column, notated mathematically (where $i$ "indexes" the observations) as
 
   $$\max_{i} x_i = \max(x_1, x_2, \ldots, x_n)$$
 
-These are **statistics** for **numeric** data; whereas, the `df['x'].value_counts()` **method** returns the count of each unique value in the data and so is contrastingly appropriate when column `x` contains non-numeric (**categorical**) data.  Using `df['x'].value_counts(dropna=False)` will additionally includes the number of missing values in the column in the returned counts; whereas, to determine this for **numeric** variables in the context of `df.describe()` would require a relative comparison to `df.shape` or `df['x'].size`.
+These are **statistics** for **numeric** data; whereas, the `df['x'].value_counts()` **method** returns the count of each unique value in the data and so is contrastingly appropriate when column `x` contains non-numeric (**categorical**) data. Using `df['x'].value_counts(dropna=False)` will additionally includes the number of missing values in the column in the returned counts; whereas, to determine this for **numeric** variables in the context of `df.describe()` would require a relative comparison to `df.shape` or `df['x'].size`.
 
-## Sorting and `.iloc` Indexing
+## Sorting and _.iloc_ Indexing
 
 > **LEC New Topics**
-> 
+>
 > 1. [sorting and (0-based) indexing](01-Data-Summarization#sorting-and-iloc-indexing)
 
 We can look into `pandas DataFrame object` datasets, such as the one introduced in LEC
@@ -489,8 +463,8 @@ df.head()  # Display the first few rows
 by **sorting** by the values within a column using `df.sort_values(by=['col1','col2])`
 
 ```python
-df_Name_sorted = df.sort_values(by='Name')  # or 
-df_Type12_sorted = df.sort_values(by=['Type 1','Type 2']) 
+df_Name_sorted = df.sort_values(by='Name')  # or
+df_Type12_sorted = df.sort_values(by=['Type 1','Type 2'])
 df_Type12_sorted
 ```
 
@@ -501,43 +475,44 @@ start_row = 50
 end_row_plus_1 = start_row + 10  # this example will select 10 rows
 # This takes the row from index `start_row` up to (but not including) `end_row_plus_1`
 df_Name_sorted.iloc[start_row:end_row_plus_1, :]  # and ":" in the second position means "all columns"
-# df_Name_sorted.iloc[:, 1:3]  # "all rows" but columns 2 and 3... wait, what?  
+# df_Name_sorted.iloc[:, 1:3]  # "all rows" but columns 2 and 3... wait, what?
 ```
 
-Python is `0`-indexed, which means the first row is in index position `0` (for the rows), and similarly the first column is in index position `0` (for the columns). So `1:3` means take the 2nd and 3rd index position (of either the rows or columns, depending on which position it is 
+Python is `0`-indexed, which means the first row is in index position `0` (for the rows), and similarly the first column is in index position `0` (for the columns). So `1:3` means take the 2nd and 3rd index position (of either the rows or columns, depending on which position it is
 in the square brackets `[rows, cols]`, so `[:, 1:3]` above references the columns).
 
 Now look again at the output of `df_Name_sorted.iloc[start_row:end_row_plus_1, :]`
-- There is a "column" without a name on the far left of the printout (which doesn't quite match the column named `#`) that can be accessed through the `.index` **attribute<br>
- `df_Name_sorted.iloc[start_row:end_row_plus_1, :].index`
+
+- There is a "column" without a name on the far left of the printout (which doesn't quite match the column named `#`) that can be accessed through the `.index` \*\*attribute<br>
+  `df_Name_sorted.iloc[start_row:end_row_plus_1, :].index`
 
 - But notice that the code in question doesn't correspond to the numbers in the `.index` **attribute...<br>
-  This is because the `.iloc` **attribute** is based on the actual (`0`-indexed) row numbers of the `pandas DataFrame object` as it currently exists, not the numbers in the `.index`. Here, the sorting of `df_Name_sorted` has resulted in the "shuffling" of the `.index` **attribute**  relative to its original order (which can be seen by looking at the initial `df` object).
+  This is because the `.iloc` **attribute** is based on the actual (`0`-indexed) row numbers of the `pandas DataFrame object` as it currently exists, not the numbers in the `.index`. Here, the sorting of `df_Name_sorted` has resulted in the "shuffling" of the `.index` **attribute\*\* relative to its original order (which can be seen by looking at the initial `df` object).
 
 It's important to keep remember that the `.iloc` and `.index` **attributes** don't refer to the same thing, especially since they often initially appear to (and seem to be named in way that suggests they "should and would").
 
 ```python
 # At first `df.index` is 0, 1, 2, 3, 4, ... so
 df.iloc[0:5, :].index  # is also still (0, 1, 2, 3, 4)
-# But now `df.dropna().index` is 0, 1, 2, 3, 6(!), ... so now 
+# But now `df.dropna().index` is 0, 1, 2, 3, 6(!), ... so now
 df.dropna().iloc[0:5, :].index  # is actually (0, 1, 2, 3, 6) instead of "indexes" (0, 1, 2, 3, 4) corresponding to "0:5"
 ```
 
-## Logical Conditionals, Boolean Selection/Subsetting, and `.loc` indexing V2
+## Logical Conditionals, Boolean Selection/Subsetting, and _.loc_ indexing V2
 
 > **LEC New Topics**
-> 
+>
 > 2. [subsetting via conditionals and boolean selection](01-Data-Summarization#logical-conditionals-boolean-selectionsubsetting-and-loc-indexing-v2)
 
 Sorting alphabetically (or even numerically) and then subsetting by actually row index numbers is going to end up feeling pretty tedious. Fortunately, we can use **logical conditionals** to **subset** to only the parts of a dataset we are interested in by using so-called **boolean selection**.
 
 ```python
 # Inequality comaprison options are `>=`, `>`, `<`, and `<=`
-df_100plusHP = df[ df.HP >= 100 ]  # creates boolean selection with a logical conditional; or, 
+df_100plusHP = df[ df.HP >= 100 ]  # creates boolean selection with a logical conditional; or,
 df_Legendary = df[df.Legendary]  # already a boolean selection so no logical conditional needed; or
 # Opposite of a boolean uses `~`; so, `df_NotLegendary = df[~df.Legendary]`
 df_Fire = df[ df['Type 1'] == 'Fire' ]
-# Opposite of `==` uses "!-"; so, df_NotFire = df[  df['Type 1'] == 'Fire' ] 
+# Opposite of `==` uses "!-"; so, df_NotFire = df[  df['Type 1'] == 'Fire' ]
 df_Fire
 ```
 
@@ -556,5 +531,3 @@ df.loc[ (df['Type 1'] == 'Fire') & (df.HP >= 100) , ["Name", "Attack", "Defense"
 df.loc[ (df['Type 1'] == 'Fire') & ((df.HP >= 100) | df.Legendary) , ["Name", "Attack", "Defense", "Legendary"] ]
 df.loc[ ~(df['Type 1'] == 'Fire') & ((df.HP >= 100) & df.Legendary) , ["Name", "Type 1", "Attack", "Defense", "Legendary"] ]
 ```
-
-
